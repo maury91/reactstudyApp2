@@ -2,24 +2,39 @@ import React from 'react';
 
 export default class TimerForm extends React.Component {
 
+    state = {
+        titleError: false,
+        projectError: false
+    };
+
     handleSubmit = () => {
-        this.props.onFormSubmit({
-            id: this.props.id,
-            title: this.refs.title.value,
-            project: this.refs.project.value
+        const titleError = !this.refs.title.value.trim().length;
+        const projectError = !this.refs.project.value.trim().length;
+        this.setState({
+            titleError,
+            projectError
         });
+        if (!titleError && !projectError) {
+            this.props.onFormSubmit({
+                id: this.props.id,
+                title: this.refs.title.value,
+                project: this.refs.project.value
+            });
+        }
     };
 
     render() {
         const submitText = this.props.id ? 'Update' : 'Create';
+        const titleClass = this.state.titleError ? 'field error' : 'field';
+        const projectClass = this.state.projectError ? 'field error' : 'field';
         return (
             <div className='ui centered card'>
                 <div className='content'>
                     <div className='ui form'>
-                        <div className='field'>
+                        <div className={titleClass}>
                             <label>Title</label>
                             <input type='text' ref="title" defaultValue={this.props.title}/></div>
-                        <div className='field'>
+                        <div className={projectClass}>
                             <label>Project</label>
                             <input type='text' ref="project" defaultValue={this.props.project}/></div>
                         <div className='ui two bottom attached buttons'>

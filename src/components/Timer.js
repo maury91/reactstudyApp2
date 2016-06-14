@@ -1,17 +1,60 @@
 import React from 'react';
+import TimerActionButton from './TimerActionButton';
 import helpers from '../helpers';
 
 export default class Timer extends React.Component {
 
+    state = {
+        buttons : false
+    };
+
+    componentDidMount() {
+        this.forceUpdateInterval = setInterval( () => this.forceUpdate(), 50 );
+    }
+
+    componentWillUnmount() {
+        clearInterval( this.forceUpdateInterval );
+    }
 
     handleTrashClick = () => {
         this.props.onTrashClick(this.props.id);
     };
 
+    handleStartClick = () => {
+        this.props.onStartClick(this.props.id);
+    };
+
+    handleStopClick = () => {
+        this.props.onStopClick(this.props.id);
+    };
+
+    showButtons = () => {
+        this.setState({
+            buttons : true
+        });
+    }
+
+    hideButtons = () => {
+        this.setState({
+            buttons : false
+        });
+    }
+
+
     render() {
-        const elapsedString = helpers.renderElapsedString(this.props.elapsed);
+        const elapsedString = helpers.renderElapsedString( this.props.elapsed, this.props.runningSince );
+        let buttons;
+        if ( this.state.buttons ) {
+            buttons = (
+                <TimerActionButton
+                    timerIsRunning={!!this.props.runningSince}
+                    onStartClick={this.handleStartClick}
+                    onStopClick={this.handleStopClick}
+                />
+            );
+        }
         return (
-            <div className='ui centered card'>
+            <div className='ui centered card' onMouseEnter={this.showButtons} onMouseLeave={this.hideButtons}>
                 <div className='content'>
                     <div className='header'> {this.props.title}
                     </div>
@@ -36,9 +79,7 @@ export default class Timer extends React.Component {
                         </span>
                     </div>
                 </div>
-                <div className='ui bottom attached blue basic button'>
-                    Start
-                </div>
+                {buttons}
             </div>
         );
     }

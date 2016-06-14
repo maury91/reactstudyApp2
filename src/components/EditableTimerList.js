@@ -15,6 +15,8 @@ export default class EditableTimerList extends React.Component {
                     runningSince={timer.runningSince}
                     onFormSubmit={this.props.onFormSubmit}
                     onTrashClick={this.props.onTrashClick}
+                    onStartClick={this.props.onStartClick}
+                    onStopClick={this.props.onStopClick}
                 /> );
         });
         return (

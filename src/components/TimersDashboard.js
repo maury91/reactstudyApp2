@@ -26,20 +26,48 @@ export default class TimersDashboard extends React.Component {
         this.updateTimer(attrs);
     };
 
-    static byId( searched_id ) {
-        return ({ id }) => id === searched_id;
+    handleStartClick = (timerId) => {
+        this.startTimer(timerId);
+    };
+
+    handleStopClick = (timerId) => {
+        this.stopTimer(timerId);
+    };
+
+    static byId(searched_id) {
+        return ({id}) => id === searched_id;
+    }
+
+    updateTimerById(id, attrs) {
+        const timers = this.state.timers.slice();
+        const timerPos = timers.findIndex(TimersDashboard.byId(id));
+        if (~timerPos) {
+            timers[timerPos] = Object.assign({}, timers[timerPos], attrs);
+            this.setState({
+                timers
+            });
+        }
     }
 
     updateTimer(attrs) {
-        const timers = this.state.timers.slice();
-        const timerPos =  timers.findIndex( TimersDashboard.byId( attrs.id ) );
-        if ( ~timerPos ) {
-            timers[timerPos] = Object.assign({}, timers[timerPos], {
-                title: attrs.title,
-                project: attrs.project
-            });
-            this.setState({
-                timers
+        this.updateTimerById(attrs.id, {
+            title: attrs.title,
+            project: attrs.project
+        });
+    }
+
+    startTimer( timerId ) {
+        this.updateTimerById( timerId, {
+            runningSince: Date.now()
+        });
+    }
+
+    stopTimer( timerId ) {
+        const timer = this.state.timers.find(TimersDashboard.byId(timerId));
+        if ( timer ) {
+            this.updateTimerById( timerId, {
+                elapsed : timer.elapsed + Date.now() - timer.runningSince,
+                runningSince : null
             });
         }
     }
@@ -61,7 +89,7 @@ export default class TimersDashboard extends React.Component {
 
     deleteTimer(timerId) {
         this.setState({
-            timers: this.state.timers.filter( ({id}) => id !== timerId)
+            timers: this.state.timers.filter(({id}) => id !== timerId)
         });
     }
 
@@ -73,6 +101,8 @@ export default class TimersDashboard extends React.Component {
                     <EditableTimerList
                         onFormSubmit={this.handleEditFormSubmit}
                         onTrashClick={this.handleTrashClick}
+                        onStartClick={this.handleStartClick}
+                        onStopClick={this.handleStopClick}
                         timers={this.state.timers}
                     />
                     <ToggleableTimerForm
