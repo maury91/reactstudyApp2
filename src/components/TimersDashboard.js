@@ -1,25 +1,16 @@
 import React from 'react';
+import helpers from '../helpers';
+import ServerCommunication from '../helpers/serverCommunication';
+
 import EditableTimerList from './EditableTimerList';
 import ToggleableTimerForm from './ToggleableTimerForm';
-import uuid from 'uuid';
-import helpers from '../helpers';
+
+const Client = new ServerCommunication();
 
 export default class TimersDashboard extends React.Component {
 
     state = {
-        timers: [{
-            title: "Practice squat",
-            project: "Gym Chores",
-            id: uuid.v4(),
-            elapsed: 5456099,
-            runningSince: Date.now()
-        }, {
-            title: "Bake squash",
-            project: "Kitchen Chores",
-            id: uuid.v4(),
-            elapsed: 1273998,
-            runningSince: null
-        }]
+        timers: []
     };
 
     handleEditFormSubmit = (attrs) => {
@@ -60,6 +51,9 @@ export default class TimersDashboard extends React.Component {
         this.updateTimerById( timerId, {
             runningSince: Date.now()
         });
+        Client.startTimer({
+            id : timerId
+        });
     }
 
     stopTimer( timerId ) {
@@ -68,6 +62,9 @@ export default class TimersDashboard extends React.Component {
             this.updateTimerById( timerId, {
                 elapsed : timer.elapsed + Date.now() - timer.runningSince,
                 runningSince : null
+            });
+            Client.stopTimer({
+                id : timerId
             });
         }
     }
@@ -93,6 +90,25 @@ export default class TimersDashboard extends React.Component {
         });
     }
 
+    loadTimersFromServer = async () => {
+        try {
+            const timers = await Client.getTimers();
+            this.setState({
+                timers
+            });
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    componentDidMount() {
+        this.loadTimersFromServer();
+        this.ajaxInterval = setInterval(this.loadTimersFromServer, 5000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.ajaxInterval);
+    }
 
     render() {
         return (

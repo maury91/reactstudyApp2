@@ -12,7 +12,9 @@ import ifElse from 'gulp-if-else';
 
 watchify.args.debug = true;
 
-const sync = browserSync.create();
+const sync = browserSync.create({
+    port : 5000
+});
 
 // Input file.
 watchify.args.debug = true;
