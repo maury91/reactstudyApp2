@@ -45,26 +45,27 @@ export default class TimersDashboard extends React.Component {
             title: attrs.title,
             project: attrs.project
         });
+        Client.updateTimer(attrs);
     }
 
-    startTimer( timerId ) {
-        this.updateTimerById( timerId, {
+    startTimer(timerId) {
+        this.updateTimerById(timerId, {
             runningSince: Date.now()
         });
         Client.startTimer({
-            id : timerId
+            id: timerId
         });
     }
 
-    stopTimer( timerId ) {
+    stopTimer(timerId) {
         const timer = this.state.timers.find(TimersDashboard.byId(timerId));
-        if ( timer ) {
-            this.updateTimerById( timerId, {
-                elapsed : timer.elapsed + Date.now() - timer.runningSince,
-                runningSince : null
+        if (timer) {
+            this.updateTimerById(timerId, {
+                elapsed: timer.elapsed + Date.now() - timer.runningSince,
+                runningSince: null
             });
             Client.stopTimer({
-                id : timerId
+                id: timerId
             });
         }
     }
@@ -78,7 +79,8 @@ export default class TimersDashboard extends React.Component {
         this.setState({
             timers: this.state.timers.concat(t)
         });
-    };
+        Client.createTimer(timer)
+    };;
 
     handleTrashClick = (timerId) => {
         this.deleteTimer(timerId);
@@ -88,9 +90,10 @@ export default class TimersDashboard extends React.Component {
         this.setState({
             timers: this.state.timers.filter(({id}) => id !== timerId)
         });
+        Client.deleteTimer( timerId );
     }
 
-    loadTimersFromServer = async () => {
+    loadTimersFromServer = async() => {
         try {
             const timers = await Client.getTimers();
             this.setState({

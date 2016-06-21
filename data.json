@@ -18,5 +18,11 @@
         "id": "2c43306e-5b44-4ff8-8753-33c35adbd06f",
         "elapsed": 11750,
         "runningSince": 1456225941911
+    },
+    {
+        "title": "Test",
+        "project": "aaab",
+        "elapsed": 0,
+        "runningSince": null
     }
 ]

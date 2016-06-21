@@ -17,5 +17,17 @@ export default class ServerCommunication {
     async stopTimer({id, stop = Date.now() }) {
         return await request.post(`${this.baseUrl}/api/timers/stop`, {id, stop});
     }
+    
+    async createTimer( attrs ) {
+        return await request.post(`${this.baseUrl}/api/timers` , attrs );
+    }
+
+    async updateTimer( attrs ) {
+        return await request.put(`${this.baseUrl}/api/timers` , attrs );
+    }
+
+    async deleteTimer( id ) {
+        return await request.delete(`${this.baseUrl}/api/timers` , { data : id } );
+    }
 
 }
