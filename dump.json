@@ -1,0 +1,2170 @@
+[
+  {
+    "__docId__": 0,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/app.js",
+    "memberof": null,
+    "longname": "src/app.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "require('babel-polyfill');\nimport React from 'react';\nimport ReactDOM from 'react-dom';\nimport TimersDashboard from './components/TimersDashboard';\n\n/**\n * Main file of the application, here the application is inserted in the document\n * @file App\n */\n\nReactDOM.render(\n    <TimersDashboard />,\n    document.getElementById('content')\n);"
+  },
+  {
+    "__docId__": 1,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/client.js",
+    "memberof": null,
+    "longname": "src/client.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "function getTimers(opts) {\n    $.ajax({ // eslint-disable-line no-undef\n        url: '/api/timers',\n        data: null,\n        method: 'get',\n        dataType: 'json',\n        cache: false,\n        success: opts.success,\n        error: function (xhr, status, err) {\n            console.error('GET /api/timers', status, err.toString()); // eslint-disable-line no-console\n        },\n    });\n}\n\nfunction createTimer(opts) {\n    $.ajax({ // eslint-disable-line no-undef\n        url: '/api/timers',\n        data: opts.data,\n        method: 'post',\n        dataType: 'json',\n        cache: false,\n        success: opts.success,\n        error: function (xhr, status, err) {\n            console.error('POST /api/timers', status, err.toString()); // eslint-disable-line no-console\n        },\n    });\n}\n\nfunction updateTimer(opts) {\n    $.ajax({ // eslint-disable-line no-undef\n        url: '/api/timers',\n        data: opts.data,\n        method: 'put',\n        dataType: 'json',\n        cache: false,\n        success: opts.success,\n        error: function (xhr, status, err) {\n            console.error('PUT /api/timers', status, err.toString()); // eslint-disable-line no-console\n        },\n    });\n}\n\nfunction startTimer(opts) {\n    $.ajax({ // eslint-disable-line no-undef\n        url: '/api/timers/start',\n        data: opts.data,\n        method: 'post',\n        dataType: 'json',\n        cache: false,\n        success: opts.success,\n        error: function (xhr, status, err) {\n            console.error('POST /api/timers/start', status, err.toString()); // eslint-disable-line no-console\n        },\n    });\n}\n\nfunction stopTimer(opts) {\n    $.ajax({ // eslint-disable-line no-undef\n        url: '/api/timers/stop',\n        data: opts.data,\n        method: 'post',\n        dataType: 'json',\n        cache: false,\n        success: opts.success,\n        error: function (xhr, status, err) {\n            console.error('POST /api/timers/stop', status, err.toString()); // eslint-disable-line no-console\n        },\n    });\n}\n\nfunction deleteTimer(timerId) {\n    $.ajax({ // eslint-disable-line no-undef\n        url: '/api/timers',\n        method: 'delete',\n        data: {\n            id: timerId\n        },\n        dataType: 'json',\n        cache: false,\n        success: opts.success,\n        error: function (xhr, status, err) {\n            console.error('DELETE /api/timers', status, err.toString()); // eslint-disable-line no-console\n        },\n    });\n}\n\nexport default {\n    getTimers: getTimers,\n    createTimer: createTimer,\n    updateTimer: updateTimer,\n    startTimer: startTimer,\n    stopTimer: stopTimer,\n    deleteTimer: deleteTimer\n};\n"
+  },
+  {
+    "__docId__": 2,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "getTimers",
+    "memberof": "src/client.js",
+    "longname": "src/client.js~getTimers",
+    "access": null,
+    "export": false,
+    "importPath": "timer_app/src/client.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "params": [
+      {
+        "name": "opts",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 3,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "createTimer",
+    "memberof": "src/client.js",
+    "longname": "src/client.js~createTimer",
+    "access": null,
+    "export": false,
+    "importPath": "timer_app/src/client.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "params": [
+      {
+        "name": "opts",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 4,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "updateTimer",
+    "memberof": "src/client.js",
+    "longname": "src/client.js~updateTimer",
+    "access": null,
+    "export": false,
+    "importPath": "timer_app/src/client.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 29,
+    "undocument": true,
+    "params": [
+      {
+        "name": "opts",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 5,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "startTimer",
+    "memberof": "src/client.js",
+    "longname": "src/client.js~startTimer",
+    "access": null,
+    "export": false,
+    "importPath": "timer_app/src/client.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 43,
+    "undocument": true,
+    "params": [
+      {
+        "name": "opts",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 6,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "stopTimer",
+    "memberof": "src/client.js",
+    "longname": "src/client.js~stopTimer",
+    "access": null,
+    "export": false,
+    "importPath": "timer_app/src/client.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 57,
+    "undocument": true,
+    "params": [
+      {
+        "name": "opts",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 7,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "deleteTimer",
+    "memberof": "src/client.js",
+    "longname": "src/client.js~deleteTimer",
+    "access": null,
+    "export": false,
+    "importPath": "timer_app/src/client.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 71,
+    "undocument": true,
+    "params": [
+      {
+        "name": "timerId",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 8,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/EditableTimer.js",
+    "memberof": null,
+    "longname": "src/components/EditableTimer.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React from 'react';\nimport TimerForm from './TimerForm';\nimport Timer from './Timer';\n\nexport default class EditableTimer extends React.Component {\n\n    state = {\n        editFormOpen: false\n    };\n\n\n    handleEditClick = () => {\n        this.openForm();\n    };\n\n    handleFormClose = () => {\n        this.closeForm();\n    };\n\n    handleSubmit = (timer) => {\n        this.props.onFormSubmit(timer);\n        this.closeForm();\n    };\n\n    closeForm = () => {\n        this.setState({ editFormOpen: false });\n    };\n\n    openForm = () => {\n        this.setState({ editFormOpen: true });\n    };\n\n    render() {\n        if (this.state.editFormOpen) {\n            return (\n                <TimerForm\n                    id={this.props.id}\n                    title={this.props.title}\n                    project={this.props.project}\n                    onFormSubmit={this.handleSubmit}\n                    onFormClose={this.handleFormClose}\n                />\n            );\n        } else {\n            return ( <Timer\n                    id={this.props.id}\n                    title={this.props.title}\n                    project={this.props.project}\n                    elapsed={this.props.elapsed}\n                    runningSince={this.props.runningSince}\n                    onEditClick={this.handleEditClick}\n                    onTrashClick={this.props.onTrashClick}\n                    onStartClick={this.props.onStartClick}\n                    onStopClick={this.props.onStopClick}\n                />\n            );\n        }\n    }\n}"
+  },
+  {
+    "__docId__": 9,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "EditableTimer",
+    "memberof": "src/components/EditableTimer.js",
+    "longname": "src/components/EditableTimer.js~EditableTimer",
+    "access": null,
+    "export": true,
+    "importPath": "timer_app/src/components/EditableTimer.js",
+    "importStyle": "EditableTimer",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "react~React.Component"
+    ]
+  },
+  {
+    "__docId__": 10,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "src/components/EditableTimer.js~EditableTimer",
+    "longname": "src/components/EditableTimer.js~EditableTimer#render",
+    "access": null,
+    "description": null,
+    "lineNumber": 33,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 11,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/EditableTimerList.js",
+    "memberof": null,
+    "longname": "src/components/EditableTimerList.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React from 'react';\nimport EditableTimer from './EditableTimer';\n\nexport default class EditableTimerList extends React.Component {\n\n    render() {\n        const timers = this.props.timers.map((timer) => {\n            return (\n                <EditableTimer\n                    key={timer.id}\n                    id={timer.id}\n                    title={timer.title}\n                    project={timer.project}\n                    elapsed={timer.elapsed}\n                    runningSince={timer.runningSince}\n                    onFormSubmit={this.props.onFormSubmit}\n                    onTrashClick={this.props.onTrashClick}\n                    onStartClick={this.props.onStartClick}\n                    onStopClick={this.props.onStopClick}\n                /> );\n        });\n        return (\n            <div id='timers'>\n                {timers}\n            </div>\n        );\n    }\n}\n"
+  },
+  {
+    "__docId__": 12,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "EditableTimerList",
+    "memberof": "src/components/EditableTimerList.js",
+    "longname": "src/components/EditableTimerList.js~EditableTimerList",
+    "access": null,
+    "export": true,
+    "importPath": "timer_app/src/components/EditableTimerList.js",
+    "importStyle": "EditableTimerList",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "react~React.Component"
+    ]
+  },
+  {
+    "__docId__": 13,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "src/components/EditableTimerList.js~EditableTimerList",
+    "longname": "src/components/EditableTimerList.js~EditableTimerList#render",
+    "access": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 14,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/Timer.js",
+    "memberof": null,
+    "longname": "src/components/Timer.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React from 'react';\nimport TimerActionButton from './TimerActionButton';\nimport helpers from '../helpers';\n\nexport default class Timer extends React.Component {\n\n    state = {\n        buttons : false\n    };\n\n    /**\n     * When the component is mounted, force the refresh every 50ms\n     */\n    componentDidMount() {\n        this.forceUpdateInterval = setInterval( () => this.forceUpdate(), 50 );\n    }\n\n    /**\n     * When the component is about to be unmounted, stop the refresh\n     */\n    componentWillUnmount() {\n        clearInterval( this.forceUpdateInterval );\n    }\n\n    handleTrashClick = () => {\n        this.props.onTrashClick(this.props.id);\n    };\n\n    handleStartClick = () => {\n        this.props.onStartClick(this.props.id);\n    };\n\n    handleStopClick = () => {\n        this.props.onStopClick(this.props.id);\n    };\n\n    showButtons = () => {\n        this.setState({\n            buttons : true\n        });\n    }\n\n    hideButtons = () => {\n        this.setState({\n            buttons : false\n        });\n    }\n\n\n    render() {\n        const elapsedString = helpers.renderElapsedString( this.props.elapsed, this.props.runningSince );\n        let buttons;\n        if ( this.state.buttons ) {\n            buttons = (\n                <TimerActionButton\n                    timerIsRunning={!!this.props.runningSince}\n                    onStartClick={this.handleStartClick}\n                    onStopClick={this.handleStopClick}\n                />\n            );\n        }\n        return (\n            <div className='ui centered card' onMouseEnter={this.showButtons} onMouseLeave={this.hideButtons}>\n                <div className='content'>\n                    <div className='header'> {this.props.title}\n                    </div>\n                    <div className='meta'>\n                        {this.props.project} </div>\n                    <div className='center aligned description'>\n                        <h2>\n                            {elapsedString}\n                        </h2></div>\n                    <div className='extra content'>\n                        <span\n                            className='right floated edit icon'\n                            onClick={this.props.onEditClick}\n                        >\n                            <i className='edit icon'></i>\n                        </span>\n                        <span\n                            className='right floated trash icon'\n                            onClick={this.handleTrashClick}\n                        >\n                            <i className='trash icon'></i>\n                        </span>\n                    </div>\n                </div>\n                {buttons}\n            </div>\n        );\n    }\n}"
+  },
+  {
+    "__docId__": 15,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "Timer",
+    "memberof": "src/components/Timer.js",
+    "longname": "src/components/Timer.js~Timer",
+    "access": null,
+    "export": true,
+    "importPath": "timer_app/src/components/Timer.js",
+    "importStyle": "Timer",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "react~React.Component"
+    ]
+  },
+  {
+    "__docId__": 16,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "componentDidMount",
+    "memberof": "src/components/Timer.js~Timer",
+    "longname": "src/components/Timer.js~Timer#componentDidMount",
+    "access": null,
+    "description": "When the component is mounted, force the refresh every 50ms",
+    "lineNumber": 14,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 17,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "forceUpdateInterval",
+    "memberof": "src/components/Timer.js~Timer",
+    "longname": "src/components/Timer.js~Timer#forceUpdateInterval",
+    "access": null,
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 18,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "componentWillUnmount",
+    "memberof": "src/components/Timer.js~Timer",
+    "longname": "src/components/Timer.js~Timer#componentWillUnmount",
+    "access": null,
+    "description": "When the component is about to be unmounted, stop the refresh",
+    "lineNumber": 21,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 19,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "src/components/Timer.js~Timer",
+    "longname": "src/components/Timer.js~Timer#render",
+    "access": null,
+    "description": null,
+    "lineNumber": 50,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 20,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/TimerActionButton.js",
+    "memberof": null,
+    "longname": "src/components/TimerActionButton.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React from 'react';\n\nexport default class TimerActionButton extends  React.Component {\n\n    render() {\n        if (this.props.timerIsRunning) {\n            return (\n                <div\n                    className='ui bottom attached red basic button'\n                    onClick={this.props.onStopClick}\n                >\n                    Stop\n                </div>\n            );\n        } else {\n            return (\n                <div\n                    className='ui bottom attached green basic button'\n                    onClick={this.props.onStartClick}\n                >\n                    Start\n                </div>\n            );\n        }\n    }\n    \n}"
+  },
+  {
+    "__docId__": 21,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "TimerActionButton",
+    "memberof": "src/components/TimerActionButton.js",
+    "longname": "src/components/TimerActionButton.js~TimerActionButton",
+    "access": null,
+    "export": true,
+    "importPath": "timer_app/src/components/TimerActionButton.js",
+    "importStyle": "TimerActionButton",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "react~React.Component"
+    ]
+  },
+  {
+    "__docId__": 22,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "src/components/TimerActionButton.js~TimerActionButton",
+    "longname": "src/components/TimerActionButton.js~TimerActionButton#render",
+    "access": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 23,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/TimerForm.js",
+    "memberof": null,
+    "longname": "src/components/TimerForm.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React from 'react';\n\nexport default class TimerForm extends React.Component {\n\n    state = {\n        titleError: false,\n        projectError: false\n    };\n\n    handleSubmit = () => {\n        const titleError = !this.refs.title.value.trim().length;\n        const projectError = !this.refs.project.value.trim().length;\n        this.setState({\n            titleError,\n            projectError\n        });\n        if (!titleError && !projectError) {\n            this.props.onFormSubmit({\n                id: this.props.id,\n                title: this.refs.title.value,\n                project: this.refs.project.value\n            });\n        }\n    };\n\n    render() {\n        const submitText = this.props.id ? 'Update' : 'Create';\n        const titleClass = this.state.titleError ? 'field error' : 'field';\n        const projectClass = this.state.projectError ? 'field error' : 'field';\n        return (\n            <div className='ui centered card'>\n                <div className='content'>\n                    <div className='ui form'>\n                        <div className={titleClass}>\n                            <label>Title</label>\n                            <input type='text' ref=\"title\" defaultValue={this.props.title}/></div>\n                        <div className={projectClass}>\n                            <label>Project</label>\n                            <input type='text' ref=\"project\" defaultValue={this.props.project}/></div>\n                        <div className='ui two bottom attached buttons'>\n                            <button\n                                className='ui basic blue button'\n                                onClick={this.handleSubmit}\n                            >\n                                {submitText}\n                            </button>\n                            <button\n                                className='ui basic red button'\n                                onClick={this.props.onFormClose}\n                            >\n                                Cancel\n                            </button>\n                        </div>\n                    </div>\n                </div>\n            </div> );\n    }\n}"
+  },
+  {
+    "__docId__": 24,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "TimerForm",
+    "memberof": "src/components/TimerForm.js",
+    "longname": "src/components/TimerForm.js~TimerForm",
+    "access": null,
+    "export": true,
+    "importPath": "timer_app/src/components/TimerForm.js",
+    "importStyle": "TimerForm",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "react~React.Component"
+    ]
+  },
+  {
+    "__docId__": 25,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "src/components/TimerForm.js~TimerForm",
+    "longname": "src/components/TimerForm.js~TimerForm#render",
+    "access": null,
+    "description": null,
+    "lineNumber": 26,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 26,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/TimersDashboard.js",
+    "memberof": null,
+    "longname": "src/components/TimersDashboard.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React from 'react';\nimport helpers from '../helpers';\nimport ServerCommunication from '../helpers/serverCommunication';\n\nimport EditableTimerList from './EditableTimerList';\nimport ToggleableTimerForm from './ToggleableTimerForm';\n\nconst Client = new ServerCommunication();\n\nexport default class TimersDashboard extends React.Component {\n\n    state = {\n        timers: []\n    };\n\n    handleEditFormSubmit = (attrs) => {\n        this.updateTimer(attrs);\n    };\n\n    handleStartClick = (timerId) => {\n        this.startTimer(timerId);\n    };\n\n    handleStopClick = (timerId) => {\n        this.stopTimer(timerId);\n    };\n\n    /**\n     * Return a function for filter/find in an array an element with the specified id\n     * @param {string} searched_id\n     * @returns {function(arg : {id: string}): boolean}\n     */\n    static byId(searched_id) {\n        return ({id}) => id === searched_id;\n    }\n\n    /**\n     * Update a timer using the defined id\n     * @param {string} id\n     * @param {APITimer} attrs\n     */\n    updateTimerById(id, attrs) {\n        const timers = this.state.timers.slice();\n        const timerPos = timers.findIndex(TimersDashboard.byId(id));\n        if (~timerPos) {\n            timers[timerPos] = Object.assign({}, timers[timerPos], attrs);\n            this.setState({\n                timers\n            });\n        }\n    }\n\n    /**\n     * Update a timer\n     * @param {APITimer} attrs\n     */\n    updateTimer(attrs) {\n        this.updateTimerById(attrs.id, {\n            title: attrs.title,\n            project: attrs.project\n        });\n        Client.updateTimer(attrs);\n    }\n\n    /**\n     * Start a timer\n     * @param {string} timerId\n     */\n    startTimer(timerId) {\n        this.updateTimerById(timerId, {\n            runningSince: Date.now()\n        });\n        Client.startTimer({\n            id: timerId\n        });\n    }\n\n    /**\n     * Stop a timer\n     * @param {string} timerId\n     */\n    stopTimer(timerId) {\n        const timer = this.state.timers.find(TimersDashboard.byId(timerId));\n        if (timer) {\n            this.updateTimerById(timerId, {\n                elapsed: timer.elapsed + Date.now() - timer.runningSince,\n                runningSince: null\n            });\n            Client.stopTimer({\n                id: timerId\n            });\n        }\n    }\n\n    handleCreateFormSubmit = (timer) => {\n        this.createTimer(timer);\n    };\n\n    /**\n     * Create a new timer\n     * @param {APITimer} timer\n     */\n    createTimer(timer) {\n        const t = helpers.newTimer(timer);\n        this.setState({\n            timers: this.state.timers.concat(t)\n        });\n        Client.createTimer(timer)\n    }\n\n    handleTrashClick = (timerId) => {\n        this.deleteTimer(timerId);\n    };\n\n    /**\n     * Delete the specified timerId from the server\n     * @param {string} timerId\n     */\n    deleteTimer(timerId) {\n        this.setState({\n            timers: this.state.timers.filter(({id}) => id !== timerId)\n        });\n        Client.deleteTimer( timerId );\n    }\n\n    loadTimersFromServer = async() => {\n        try {\n            const timers = await Client.getTimers();\n            this.setState({\n                timers\n            });\n        } catch (err) {\n            console.error(err);\n        }\n    }\n\n    /**\n     * Reload the data from the server every 5s\n     */\n    componentDidMount() {\n        this.loadTimersFromServer();\n        /**\n         * Ref of the setInterval\n         * This variable is used to clear the interval when the element is unmounted\n         * @type {number}\n         */\n        this.ajaxInterval = setInterval(this.loadTimersFromServer, 5000);\n    }\n\n    /**\n     * Stop loading the data from the server\n     */\n    componentWillUnmount() {\n        clearInterval(this.ajaxInterval);\n    }\n\n    render() {\n        return (\n            <div className='ui three column centered grid'>\n                <div className='column'>\n                    <EditableTimerList\n                        onFormSubmit={this.handleEditFormSubmit}\n                        onTrashClick={this.handleTrashClick}\n                        onStartClick={this.handleStartClick}\n                        onStopClick={this.handleStopClick}\n                        timers={this.state.timers}\n                    />\n                    <ToggleableTimerForm\n                        onFormSubmit={this.handleCreateFormSubmit}\n                        isOpen={true}/>\n                </div>\n            </div>\n        );\n    }\n}\n"
+  },
+  {
+    "__docId__": 27,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "Client",
+    "memberof": "src/components/TimersDashboard.js",
+    "longname": "src/components/TimersDashboard.js~Client",
+    "access": null,
+    "export": false,
+    "importPath": "timer_app/src/components/TimersDashboard.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "type": {
+      "types": [
+        "src/helpers/serverCommunication.js~ServerCommunication"
+      ]
+    }
+  },
+  {
+    "__docId__": 28,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "TimersDashboard",
+    "memberof": "src/components/TimersDashboard.js",
+    "longname": "src/components/TimersDashboard.js~TimersDashboard",
+    "access": null,
+    "export": true,
+    "importPath": "timer_app/src/components/TimersDashboard.js",
+    "importStyle": "TimersDashboard",
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "react~React.Component"
+    ]
+  },
+  {
+    "__docId__": 29,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "byId",
+    "memberof": "src/components/TimersDashboard.js~TimersDashboard",
+    "longname": "src/components/TimersDashboard.js~TimersDashboard.byId",
+    "access": null,
+    "description": "Return a function for filter/find in an array an element with the specified id",
+    "lineNumber": 33,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{function(arg : {id: string}): boolean}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searched_id",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "function(arg : {id: string}): boolean"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 30,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "updateTimerById",
+    "memberof": "src/components/TimersDashboard.js~TimersDashboard",
+    "longname": "src/components/TimersDashboard.js~TimersDashboard#updateTimerById",
+    "access": null,
+    "description": "Update a timer using the defined id",
+    "lineNumber": 42,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "APITimer"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "attrs",
+        "description": ""
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 31,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "updateTimer",
+    "memberof": "src/components/TimersDashboard.js~TimersDashboard",
+    "longname": "src/components/TimersDashboard.js~TimersDashboard#updateTimer",
+    "access": null,
+    "description": "Update a timer",
+    "lineNumber": 57,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "APITimer"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "attrs",
+        "description": ""
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 32,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "startTimer",
+    "memberof": "src/components/TimersDashboard.js~TimersDashboard",
+    "longname": "src/components/TimersDashboard.js~TimersDashboard#startTimer",
+    "access": null,
+    "description": "Start a timer",
+    "lineNumber": 69,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "timerId",
+        "description": ""
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 33,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "stopTimer",
+    "memberof": "src/components/TimersDashboard.js~TimersDashboard",
+    "longname": "src/components/TimersDashboard.js~TimersDashboard#stopTimer",
+    "access": null,
+    "description": "Stop a timer",
+    "lineNumber": 82,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "timerId",
+        "description": ""
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 34,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "createTimer",
+    "memberof": "src/components/TimersDashboard.js~TimersDashboard",
+    "longname": "src/components/TimersDashboard.js~TimersDashboard#createTimer",
+    "access": null,
+    "description": "Create a new timer",
+    "lineNumber": 103,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "APITimer"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "timer",
+        "description": ""
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 35,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "deleteTimer",
+    "memberof": "src/components/TimersDashboard.js~TimersDashboard",
+    "longname": "src/components/TimersDashboard.js~TimersDashboard#deleteTimer",
+    "access": null,
+    "description": "Delete the specified timerId from the server",
+    "lineNumber": 119,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "timerId",
+        "description": ""
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 36,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "componentDidMount",
+    "memberof": "src/components/TimersDashboard.js~TimersDashboard",
+    "longname": "src/components/TimersDashboard.js~TimersDashboard#componentDidMount",
+    "access": null,
+    "description": "Reload the data from the server every 5s",
+    "lineNumber": 140,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 37,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "ajaxInterval",
+    "memberof": "src/components/TimersDashboard.js~TimersDashboard",
+    "longname": "src/components/TimersDashboard.js~TimersDashboard#ajaxInterval",
+    "access": null,
+    "description": "Ref of the setInterval\nThis variable is used to clear the interval when the element is unmounted",
+    "lineNumber": 147,
+    "type": {
+      "nullable": null,
+      "types": [
+        "number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 38,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "componentWillUnmount",
+    "memberof": "src/components/TimersDashboard.js~TimersDashboard",
+    "longname": "src/components/TimersDashboard.js~TimersDashboard#componentWillUnmount",
+    "access": null,
+    "description": "Stop loading the data from the server",
+    "lineNumber": 153,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 39,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "src/components/TimersDashboard.js~TimersDashboard",
+    "longname": "src/components/TimersDashboard.js~TimersDashboard#render",
+    "access": null,
+    "description": null,
+    "lineNumber": 157,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 40,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/components/ToggleableTimerForm.js",
+    "memberof": null,
+    "longname": "src/components/ToggleableTimerForm.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import React from 'react';\nimport TimerForm from './TimerForm';\n\nexport default class ToggleableTimerForm extends React.Component {\n\n    state = {\n        isOpen: false\n    };\n\n    handleFormOpen = () => {\n        this.setState({\n            isOpen: true\n        });\n    };\n\n    handleFormClose = () => {\n        this.setState({ isOpen: false });\n    };\n\n    handleFormSubmit = (timer) => {\n        this.props.onFormSubmit(timer);\n        this.setState({ isOpen: false });\n    };\n\n    render() {\n        if (this.state.isOpen) {\n            return (\n                <TimerForm\n                    onFormSubmit={this.handleFormSubmit}\n                    onFormClose={this.handleFormClose}\n                />\n            );\n        } else {\n            return (\n                <div className='ui basic content center aligned segment'>\n                    <button\n                        className='ui basic button icon'\n                        onClick={this.handleFormOpen}\n                    >\n                        <i className='plus icon'></i>\n                    </button>\n                </div> );\n        }\n    }\n}"
+  },
+  {
+    "__docId__": 41,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "ToggleableTimerForm",
+    "memberof": "src/components/ToggleableTimerForm.js",
+    "longname": "src/components/ToggleableTimerForm.js~ToggleableTimerForm",
+    "access": null,
+    "export": true,
+    "importPath": "timer_app/src/components/ToggleableTimerForm.js",
+    "importStyle": "ToggleableTimerForm",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "react~React.Component"
+    ]
+  },
+  {
+    "__docId__": 42,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "src/components/ToggleableTimerForm.js~ToggleableTimerForm",
+    "longname": "src/components/ToggleableTimerForm.js~ToggleableTimerForm#render",
+    "access": null,
+    "description": null,
+    "lineNumber": 25,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 43,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/helpers/serverCommunication.js",
+    "memberof": null,
+    "longname": "src/helpers/serverCommunication.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import request from 'superagent';\n\nexport default class ServerCommunication {\n\n    constructor(baseUrl = '') {\n        this.baseUrl = baseUrl;\n    }\n\n    /**\n     * @typedef {Object} APITimer\n     * @property {string} title - Title of the Timer\n     * @property {string} project - Name of the Project\n     * @property {number} elapsed - Elapsed milliseconds\n     * @property {string} id - UUIDv4 of the timer\n     * @property {number|null} runningSince - Unix Timestamp of when the timer was started\n     */\n\n    /**\n     *\n     * @returns {Promise<Array<APITimer>>}\n     */\n    async getTimers() {\n        return (await request.get(`${this.baseUrl}/api/timers`)).body;\n    }\n\n    /**\n     * Start a timer\n     * @param {Object} arg\n     * @param {string} arg.id\n     * @param {number} arg.start\n     * @returns {Promise}\n     */\n    async startTimer({id, start = Date.now() }) {\n        return await request.post(`${this.baseUrl}/api/timers/start`, {id, start});\n    }\n\n    /**\n     * Stop a timer\n     * @param {Object} arg\n     * @param {string} arg.id\n     * @param {number} arg.stop\n     * @returns {Promise}\n     */\n    async stopTimer({id, stop = Date.now() }) {\n        return await request.post(`${this.baseUrl}/api/timers/stop`, {id, stop});\n    }\n\n    /**\n     * Create a new timer\n     * @param {APITimer} attrs\n     * @returns {Promise}\n     */\n    async createTimer( attrs ) {\n        return await request.post(`${this.baseUrl}/api/timers` , attrs );\n    }\n\n    /**\n     * Change a property of a timer\n     * @param {APITimer} attrs\n     * @returns {Promise}\n     */\n    async updateTimer( attrs ) {\n        return await request.put(`${this.baseUrl}/api/timers` , attrs );\n    }\n\n    /**\n     * Delete a timer\n     * @param {string} id\n     * @returns {Promise}\n     */\n    async deleteTimer( id ) {\n        return await request.delete(`${this.baseUrl}/api/timers` , { data : id } );\n    }\n\n}\n"
+  },
+  {
+    "__docId__": 44,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "ServerCommunication",
+    "memberof": "src/helpers/serverCommunication.js",
+    "longname": "src/helpers/serverCommunication.js~ServerCommunication",
+    "access": null,
+    "export": true,
+    "importPath": "timer_app/src/helpers/serverCommunication.js",
+    "importStyle": "ServerCommunication",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "interface": false
+  },
+  {
+    "__docId__": 45,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "src/helpers/serverCommunication.js~ServerCommunication",
+    "longname": "src/helpers/serverCommunication.js~ServerCommunication#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "params": [
+      {
+        "name": "baseUrl",
+        "optional": true,
+        "types": [
+          "string"
+        ],
+        "defaultRaw": "",
+        "defaultValue": ""
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 46,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "baseUrl",
+    "memberof": "src/helpers/serverCommunication.js~ServerCommunication",
+    "longname": "src/helpers/serverCommunication.js~ServerCommunication#baseUrl",
+    "access": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 47,
+    "kind": "typedef",
+    "static": true,
+    "variation": null,
+    "name": "APITimer",
+    "memberof": "src/helpers/serverCommunication.js~ServerCommunication",
+    "longname": "src/helpers/serverCommunication.js~ServerCommunication.APITimer",
+    "access": null,
+    "description": "",
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "title",
+        "description": "Title of the Timer"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "project",
+        "description": "Name of the Project"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "elapsed",
+        "description": "Elapsed milliseconds"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "UUIDv4 of the timer"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number",
+          "null"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "runningSince",
+        "description": "Unix Timestamp of when the timer was started"
+      }
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "APITimer"
+    }
+  },
+  {
+    "__docId__": 48,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "getTimers",
+    "memberof": "src/helpers/serverCommunication.js~ServerCommunication",
+    "longname": "src/helpers/serverCommunication.js~ServerCommunication#getTimers",
+    "access": null,
+    "description": "",
+    "lineNumber": 22,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Promise<Array<APITimer>>}"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<Array<APITimer>>"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 49,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "startTimer",
+    "memberof": "src/helpers/serverCommunication.js~ServerCommunication",
+    "longname": "src/helpers/serverCommunication.js~ServerCommunication#startTimer",
+    "access": null,
+    "description": "Start a timer",
+    "lineNumber": 33,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Promise}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "arg",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "arg.id",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "arg.start",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 50,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "stopTimer",
+    "memberof": "src/helpers/serverCommunication.js~ServerCommunication",
+    "longname": "src/helpers/serverCommunication.js~ServerCommunication#stopTimer",
+    "access": null,
+    "description": "Stop a timer",
+    "lineNumber": 44,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Promise}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "arg",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "arg.id",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "arg.stop",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 51,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "createTimer",
+    "memberof": "src/helpers/serverCommunication.js~ServerCommunication",
+    "longname": "src/helpers/serverCommunication.js~ServerCommunication#createTimer",
+    "access": null,
+    "description": "Create a new timer",
+    "lineNumber": 53,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Promise}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "APITimer"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "attrs",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 52,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "updateTimer",
+    "memberof": "src/helpers/serverCommunication.js~ServerCommunication",
+    "longname": "src/helpers/serverCommunication.js~ServerCommunication#updateTimer",
+    "access": null,
+    "description": "Change a property of a timer",
+    "lineNumber": 62,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Promise}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "APITimer"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "attrs",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 53,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "deleteTimer",
+    "memberof": "src/helpers/serverCommunication.js~ServerCommunication",
+    "longname": "src/helpers/serverCommunication.js~ServerCommunication#deleteTimer",
+    "access": null,
+    "description": "Delete a timer",
+    "lineNumber": 71,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Promise}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 54,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/helpers.js",
+    "memberof": null,
+    "longname": "src/helpers.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import uuid from 'uuid';\n\nfunction newTimer(attrs = {}) {\n    return {\n        title: attrs.title || 'Timer',\n        project: attrs.project || 'Project',\n        id: uuid.v4(), // eslint-disable-line no-undef\n        elapsed: 0\n    };\n}\n\nfunction findById(array, id, cb) {\n    cb(array.find(el => el.id === id));\n}\n\nfunction renderElapsedString(elapsed, runningSince) {\n    let totalElapsed = elapsed;\n    if (runningSince) {\n        totalElapsed += Date.now() - runningSince;\n    }\n    return millisecondsToHuman(totalElapsed);\n}\n\nfunction millisecondsToHuman(ms) {\n    const seconds = Math.floor((ms / 1000) % 60);\n    const minutes = Math.floor((ms / 1000 / 60) % 60);\n    const hours = Math.floor(ms / 1000 / 60 / 60);\n\n    return [\n        pad(hours.toString(), 2),\n        pad(minutes.toString(), 2),\n        pad(seconds.toString(), 2)\n    ].join(':');\n\n}\n\nfunction pad(numberString, size) {\n    let padded = numberString;\n    while (padded.length < size) padded = '0' + padded;\n    return padded;\n}\n\nexport default {\n    millisecondsToHuman: millisecondsToHuman,\n    newTimer: newTimer,\n    findById: findById,\n    renderElapsedString: renderElapsedString\n};"
+  },
+  {
+    "__docId__": 55,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "newTimer",
+    "memberof": "src/helpers.js",
+    "longname": "src/helpers.js~newTimer",
+    "access": null,
+    "export": false,
+    "importPath": "timer_app/src/helpers.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "attrs",
+        "optional": true,
+        "types": [
+          "{}"
+        ],
+        "defaultRaw": {},
+        "defaultValue": "{}"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 56,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "findById",
+    "memberof": "src/helpers.js",
+    "longname": "src/helpers.js~findById",
+    "access": null,
+    "export": false,
+    "importPath": "timer_app/src/helpers.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "array",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "id",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "cb",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 57,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "renderElapsedString",
+    "memberof": "src/helpers.js",
+    "longname": "src/helpers.js~renderElapsedString",
+    "access": null,
+    "export": false,
+    "importPath": "timer_app/src/helpers.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "params": [
+      {
+        "name": "elapsed",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "runningSince",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 58,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "millisecondsToHuman",
+    "memberof": "src/helpers.js",
+    "longname": "src/helpers.js~millisecondsToHuman",
+    "access": null,
+    "export": false,
+    "importPath": "timer_app/src/helpers.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 24,
+    "undocument": true,
+    "params": [
+      {
+        "name": "ms",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 59,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "pad",
+    "memberof": "src/helpers.js",
+    "longname": "src/helpers.js~pad",
+    "access": null,
+    "export": false,
+    "importPath": "timer_app/src/helpers.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 37,
+    "undocument": true,
+    "params": [
+      {
+        "name": "numberString",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "size",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 61,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Infinity",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 62,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~NaN",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 63,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~undefined",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 64,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~null",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 65,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 66,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 67,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 68,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 69,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 70,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 71,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Symbol",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 72,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Error",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 73,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~EvalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 74,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~InternalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 75,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RangeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 76,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ReferenceError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 77,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~SyntaxError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 78,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~TypeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 79,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~URIError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 80,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 81,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 82,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Date",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 83,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~String",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 84,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~string",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 85,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RegExp",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 86,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 87,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 88,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 89,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8ClampedArray",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 90,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 91,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 92,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 93,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 94,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 95,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float64Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 96,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Map",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 97,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Set",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 98,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakMap",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 99,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakSet",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 100,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ArrayBuffer",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 101,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~DataView",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 102,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~JSON",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 103,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Promise",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 104,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Generator",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 105,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~GeneratorFunction",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 106,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Reflect",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 107,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Proxy",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 109,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "CanvasRenderingContext2D",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 110,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "DocumentFragment",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~DocumentFragment",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 111,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Element",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Element",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Element",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 112,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Event",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Event",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Event",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 113,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Node",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Node",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Node",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 114,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "NodeList",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/NodeList",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~NodeList",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 115,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "XMLHttpRequest",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~XMLHttpRequest",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 116,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "AudioContext",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/AudioContext",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~AudioContext",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  }
+]

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/helpers/serverCommunication.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/EditableTimer.js~EditableTimer.html">EditableTimer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/EditableTimerList.js~EditableTimerList.html">EditableTimerList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Timer.js~Timer.html">Timer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/TimerActionButton.js~TimerActionButton.html">TimerActionButton</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/TimerForm.js~TimerForm.html">TimerForm</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/TimersDashboard.js~TimersDashboard.html">TimersDashboard</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/ToggleableTimerForm.js~ToggleableTimerForm.html">ToggleableTimerForm</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">helpers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helpers/serverCommunication.js~ServerCommunication.html">ServerCommunication</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-APITimer">APITimer</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/helpers/serverCommunication.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import request from &apos;superagent&apos;;
+
+export default class ServerCommunication {
+
+    constructor(baseUrl = &apos;&apos;) {
+        this.baseUrl = baseUrl;
+    }
+
+    /**
+     * @typedef {Object} APITimer
+     * @property {string} title - Title of the Timer
+     * @property {string} project - Name of the Project
+     * @property {number} elapsed - Elapsed milliseconds
+     * @property {string} id - UUIDv4 of the timer
+     * @property {number|null} runningSince - Unix Timestamp of when the timer was started
+     */
+
+    /**
+     *
+     * @returns {Promise&lt;Array&lt;APITimer&gt;&gt;}
+     */
+    async getTimers() {
+        return (await request.get(`${this.baseUrl}/api/timers`)).body;
+    }
+
+    /**
+     * Start a timer
+     * @param {Object} arg
+     * @param {string} arg.id
+     * @param {number} arg.start
+     * @returns {Promise}
+     */
+    async startTimer({id, start = Date.now() }) {
+        return await request.post(`${this.baseUrl}/api/timers/start`, {id, start});
+    }
+
+    /**
+     * Stop a timer
+     * @param {Object} arg
+     * @param {string} arg.id
+     * @param {number} arg.stop
+     * @returns {Promise}
+     */
+    async stopTimer({id, stop = Date.now() }) {
+        return await request.post(`${this.baseUrl}/api/timers/stop`, {id, stop});
+    }
+
+    /**
+     * Create a new timer
+     * @param {APITimer} attrs
+     * @returns {Promise}
+     */
+    async createTimer( attrs ) {
+        return await request.post(`${this.baseUrl}/api/timers` , attrs );
+    }
+
+    /**
+     * Change a property of a timer
+     * @param {APITimer} attrs
+     * @returns {Promise}
+     */
+    async updateTimer( attrs ) {
+        return await request.put(`${this.baseUrl}/api/timers` , attrs );
+    }
+
+    /**
+     * Delete a timer
+     * @param {string} id
+     * @returns {Promise}
+     */
+    async deleteTimer( id ) {
+        return await request.delete(`${this.baseUrl}/api/timers` , { data : id } );
+    }
+
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

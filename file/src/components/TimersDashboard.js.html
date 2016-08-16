@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/components/TimersDashboard.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/EditableTimer.js~EditableTimer.html">EditableTimer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/EditableTimerList.js~EditableTimerList.html">EditableTimerList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Timer.js~Timer.html">Timer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/TimerActionButton.js~TimerActionButton.html">TimerActionButton</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/TimerForm.js~TimerForm.html">TimerForm</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/TimersDashboard.js~TimersDashboard.html">TimersDashboard</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/ToggleableTimerForm.js~ToggleableTimerForm.html">ToggleableTimerForm</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">helpers</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helpers/serverCommunication.js~ServerCommunication.html">ServerCommunication</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-APITimer">APITimer</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/components/TimersDashboard.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React from &apos;react&apos;;
+import helpers from &apos;../helpers&apos;;
+import ServerCommunication from &apos;../helpers/serverCommunication&apos;;
+
+import EditableTimerList from &apos;./EditableTimerList&apos;;
+import ToggleableTimerForm from &apos;./ToggleableTimerForm&apos;;
+
+const Client = new ServerCommunication();
+
+export default class TimersDashboard extends React.Component {
+
+    state = {
+        timers: []
+    };
+
+    handleEditFormSubmit = (attrs) =&gt; {
+        this.updateTimer(attrs);
+    };
+
+    handleStartClick = (timerId) =&gt; {
+        this.startTimer(timerId);
+    };
+
+    handleStopClick = (timerId) =&gt; {
+        this.stopTimer(timerId);
+    };
+
+    /**
+     * Return a function for filter/find in an array an element with the specified id
+     * @param {string} searched_id
+     * @returns {function(arg : {id: string}): boolean}
+     */
+    static byId(searched_id) {
+        return ({id}) =&gt; id === searched_id;
+    }
+
+    /**
+     * Update a timer using the defined id
+     * @param {string} id
+     * @param {APITimer} attrs
+     */
+    updateTimerById(id, attrs) {
+        const timers = this.state.timers.slice();
+        const timerPos = timers.findIndex(TimersDashboard.byId(id));
+        if (~timerPos) {
+            timers[timerPos] = Object.assign({}, timers[timerPos], attrs);
+            this.setState({
+                timers
+            });
+        }
+    }
+
+    /**
+     * Update a timer
+     * @param {APITimer} attrs
+     */
+    updateTimer(attrs) {
+        this.updateTimerById(attrs.id, {
+            title: attrs.title,
+            project: attrs.project
+        });
+        Client.updateTimer(attrs);
+    }
+
+    /**
+     * Start a timer
+     * @param {string} timerId
+     */
+    startTimer(timerId) {
+        this.updateTimerById(timerId, {
+            runningSince: Date.now()
+        });
+        Client.startTimer({
+            id: timerId
+        });
+    }
+
+    /**
+     * Stop a timer
+     * @param {string} timerId
+     */
+    stopTimer(timerId) {
+        const timer = this.state.timers.find(TimersDashboard.byId(timerId));
+        if (timer) {
+            this.updateTimerById(timerId, {
+                elapsed: timer.elapsed + Date.now() - timer.runningSince,
+                runningSince: null
+            });
+            Client.stopTimer({
+                id: timerId
+            });
+        }
+    }
+
+    handleCreateFormSubmit = (timer) =&gt; {
+        this.createTimer(timer);
+    };
+
+    /**
+     * Create a new timer
+     * @param {APITimer} timer
+     */
+    createTimer(timer) {
+        const t = helpers.newTimer(timer);
+        this.setState({
+            timers: this.state.timers.concat(t)
+        });
+        Client.createTimer(timer)
+    }
+
+    handleTrashClick = (timerId) =&gt; {
+        this.deleteTimer(timerId);
+    };
+
+    /**
+     * Delete the specified timerId from the server
+     * @param {string} timerId
+     */
+    deleteTimer(timerId) {
+        this.setState({
+            timers: this.state.timers.filter(({id}) =&gt; id !== timerId)
+        });
+        Client.deleteTimer( timerId );
+    }
+
+    loadTimersFromServer = async() =&gt; {
+        try {
+            const timers = await Client.getTimers();
+            this.setState({
+                timers
+            });
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    /**
+     * Reload the data from the server every 5s
+     */
+    componentDidMount() {
+        this.loadTimersFromServer();
+        /**
+         * Ref of the setInterval
+         * This variable is used to clear the interval when the element is unmounted
+         * @type {number}
+         */
+        this.ajaxInterval = setInterval(this.loadTimersFromServer, 5000);
+    }
+
+    /**
+     * Stop loading the data from the server
+     */
+    componentWillUnmount() {
+        clearInterval(this.ajaxInterval);
+    }
+
+    render() {
+        return (
+            &lt;div className=&apos;ui three column centered grid&apos;&gt;
+                &lt;div className=&apos;column&apos;&gt;
+                    &lt;EditableTimerList
+                        onFormSubmit={this.handleEditFormSubmit}
+                        onTrashClick={this.handleTrashClick}
+                        onStartClick={this.handleStartClick}
+                        onStopClick={this.handleStopClick}
+                        timers={this.state.timers}
+                    /&gt;
+                    &lt;ToggleableTimerForm
+                        onFormSubmit={this.handleCreateFormSubmit}
+                        isOpen={true}/&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
