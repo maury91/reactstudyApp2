@@ -8,10 +8,16 @@ export default class Timer extends React.Component {
         buttons : false
     };
 
+    /**
+     * When the component is mounted, force the refresh every 50ms
+     */
     componentDidMount() {
         this.forceUpdateInterval = setInterval( () => this.forceUpdate(), 50 );
     }
 
+    /**
+     * When the component is about to be unmounted, stop the refresh
+     */
     componentWillUnmount() {
         clearInterval( this.forceUpdateInterval );
     }

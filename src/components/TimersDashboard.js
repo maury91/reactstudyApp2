@@ -25,10 +25,20 @@ export default class TimersDashboard extends React.Component {
         this.stopTimer(timerId);
     };
 
+    /**
+     * Return a function for filter/find in an array an element with the specified id
+     * @param {string} searched_id
+     * @returns {function(arg : {id: string}): boolean}
+     */
     static byId(searched_id) {
         return ({id}) => id === searched_id;
     }
 
+    /**
+     * Update a timer using the defined id
+     * @param {string} id
+     * @param {APITimer} attrs
+     */
     updateTimerById(id, attrs) {
         const timers = this.state.timers.slice();
         const timerPos = timers.findIndex(TimersDashboard.byId(id));
@@ -40,6 +50,10 @@ export default class TimersDashboard extends React.Component {
         }
     }
 
+    /**
+     * Update a timer
+     * @param {APITimer} attrs
+     */
     updateTimer(attrs) {
         this.updateTimerById(attrs.id, {
             title: attrs.title,
@@ -48,6 +62,10 @@ export default class TimersDashboard extends React.Component {
         Client.updateTimer(attrs);
     }
 
+    /**
+     * Start a timer
+     * @param {string} timerId
+     */
     startTimer(timerId) {
         this.updateTimerById(timerId, {
             runningSince: Date.now()
@@ -57,6 +75,10 @@ export default class TimersDashboard extends React.Component {
         });
     }
 
+    /**
+     * Stop a timer
+     * @param {string} timerId
+     */
     stopTimer(timerId) {
         const timer = this.state.timers.find(TimersDashboard.byId(timerId));
         if (timer) {
@@ -74,18 +96,26 @@ export default class TimersDashboard extends React.Component {
         this.createTimer(timer);
     };
 
+    /**
+     * Create a new timer
+     * @param {APITimer} timer
+     */
     createTimer(timer) {
         const t = helpers.newTimer(timer);
         this.setState({
             timers: this.state.timers.concat(t)
         });
         Client.createTimer(timer)
-    };;
+    }
 
     handleTrashClick = (timerId) => {
         this.deleteTimer(timerId);
     };
 
+    /**
+     * Delete the specified timerId from the server
+     * @param {string} timerId
+     */
     deleteTimer(timerId) {
         this.setState({
             timers: this.state.timers.filter(({id}) => id !== timerId)
@@ -104,11 +134,22 @@ export default class TimersDashboard extends React.Component {
         }
     }
 
+    /**
+     * Reload the data from the server every 5s
+     */
     componentDidMount() {
         this.loadTimersFromServer();
+        /**
+         * Ref of the setInterval
+         * This variable is used to clear the interval when the element is unmounted
+         * @type {number}
+         */
         this.ajaxInterval = setInterval(this.loadTimersFromServer, 5000);
     }
 
+    /**
+     * Stop loading the data from the server
+     */
     componentWillUnmount() {
         clearInterval(this.ajaxInterval);
     }
