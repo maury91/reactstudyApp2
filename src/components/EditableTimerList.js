@@ -1,8 +1,16 @@
 import React from 'react';
 import EditableTimer from './EditableTimer';
 
+/**
+ * This component is a list of Editable Timers
+ * This component is stateless
+ */
 export default class EditableTimerList extends React.Component {
 
+    /**
+     * Render
+     * @returns {XML}
+     */
     render() {
         const timers = this.props.timers.map((timer) => {
             return (

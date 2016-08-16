@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * This component is a Timer when is being edited
+ */
 export default class TimerForm extends React.Component {
 
     state = {
@@ -23,6 +26,10 @@ export default class TimerForm extends React.Component {
         }
     };
 
+    /**
+     * Render
+     * @returns {XML}
+     */
     render() {
         const submitText = this.props.id ? 'Update' : 'Create';
         const titleClass = this.state.titleError ? 'field error' : 'field';

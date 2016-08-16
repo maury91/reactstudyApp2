@@ -1,7 +1,14 @@
 import React from 'react';
 
+/**
+ * This component is a simple button, if the timer is running is a Stop button, else is a Start button
+ */
 export default class TimerActionButton extends  React.Component {
 
+    /**
+     * Render
+     * @returns {XML}
+     */
     render() {
         if (this.props.timerIsRunning) {
             return (

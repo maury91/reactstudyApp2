@@ -1,8 +1,19 @@
 import request from 'superagent';
 
+/**
+ * This class handle all the communication with the server
+ * Providing a set of methods that returns Promises
+ */
 export default class ServerCommunication {
 
+    /**
+     * @param {string} [baseUrl=''] - Location of the api
+     */
     constructor(baseUrl = '') {
+        /**
+         * Location of the api
+         * @type {string}
+         */
         this.baseUrl = baseUrl;
     }
 

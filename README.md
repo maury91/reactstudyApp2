@@ -1,3 +1,5 @@
+[![Document](http://maury91.github.io/reactstudyApp2/badge.svg?t=0)](http://maury91.github.io/reactstudyApp2)
+
 # Personal repo for exercise with React
 
 After some time I choose to make publics these repositories, you can find them in my Account, they are all called "reactStudyApp{n}".

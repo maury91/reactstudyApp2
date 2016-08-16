@@ -1,6 +1,9 @@
 import React from 'react';
 import TimerForm from './TimerForm';
 
+/**
+ * This component shows a timer or a form to edit the timer, based on his internal state
+ */
 export default class ToggleableTimerForm extends React.Component {
 
     state = {
@@ -22,6 +25,10 @@ export default class ToggleableTimerForm extends React.Component {
         this.setState({ isOpen: false });
     };
 
+    /**
+     * Render
+     * @returns {XML}
+     */
     render() {
         if (this.state.isOpen) {
             return (

@@ -2,6 +2,9 @@ import React from 'react';
 import TimerActionButton from './TimerActionButton';
 import helpers from '../helpers';
 
+/**
+ * This component shows a simple timer, the timer update the time showed every 50ms
+ */
 export default class Timer extends React.Component {
 
     state = {
@@ -12,6 +15,10 @@ export default class Timer extends React.Component {
      * When the component is mounted, force the refresh every 50ms
      */
     componentDidMount() {
+        /**
+         * This variable is used to stop the forceUpdate when the component is unmounted
+         * @type {number}
+         */
         this.forceUpdateInterval = setInterval( () => this.forceUpdate(), 50 );
     }
 
@@ -46,7 +53,10 @@ export default class Timer extends React.Component {
         });
     }
 
-
+    /**
+     * Render
+     * @returns {XML}
+     */
     render() {
         const elapsedString = helpers.renderElapsedString( this.props.elapsed, this.props.runningSince );
         let buttons;

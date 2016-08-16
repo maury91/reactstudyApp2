@@ -2,6 +2,9 @@ import React from 'react';
 import TimerForm from './TimerForm';
 import Timer from './Timer';
 
+/**
+ * This component is a Timer that can be opened to be edited
+ */
 export default class EditableTimer extends React.Component {
 
     state = {
@@ -30,6 +33,10 @@ export default class EditableTimer extends React.Component {
         this.setState({ editFormOpen: true });
     };
 
+    /**
+     * Render Method
+     * @returns {XML}
+     */
     render() {
         if (this.state.editFormOpen) {
             return (

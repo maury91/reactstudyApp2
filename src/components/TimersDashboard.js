@@ -7,6 +7,10 @@ import ToggleableTimerForm from './ToggleableTimerForm';
 
 const Client = new ServerCommunication();
 
+/**
+ * This is the main component, it shows a list of editable timers and a button/box to create a new timer
+ * It also handle all the logic and communication with the server
+ */
 export default class TimersDashboard extends React.Component {
 
     state = {
@@ -154,6 +158,10 @@ export default class TimersDashboard extends React.Component {
         clearInterval(this.ajaxInterval);
     }
 
+    /**
+     * Render
+     * @returns {XML}
+     */
     render() {
         return (
             <div className='ui three column centered grid'>
