@@ -76,9 +76,7 @@ gulp.task('makedoc', () => {
 
 gulp.task('publishDoc',['makedoc'], () => {
     return gulp.src('./documentation/**/*')
-        .pipe(ghPages({
-            push : false
-        }));
+        .pipe(ghPages());
 });
 
 gulp.task('doc',['makedoc'], () => {

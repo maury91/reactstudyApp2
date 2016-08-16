@@ -9,6 +9,10 @@ I am developing the exercises of the book using ES7 + Babel transpiling on the s
 You can see the solution proposed by the book on the file app-complete.js and my solution on the folder src.
 
 
+# Documentation
+
+http://maury91.github.io/reactstudyApp2
+
 
 ### Running the app
 
