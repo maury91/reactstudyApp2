@@ -74,6 +74,13 @@ gulp.task('makedoc', () => {
         }));
 });
 
+gulp.task('publishDoc',['makedoc'], () => {
+    return gulp.src('./documentation/**/*')
+        .pipe(ghPages({
+            push : false
+        }));
+});
+
 gulp.task('doc',['makedoc'], () => {
     browserSync({
         port : 8000,
