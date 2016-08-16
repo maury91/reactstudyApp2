@@ -49,6 +49,9 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React from &apos;react&apos;;
 import TimerForm from &apos;./TimerForm&apos;;
 
+/**
+ * This component shows a timer or a form to edit the timer, based on his internal state
+ */
 export default class ToggleableTimerForm extends React.Component {
 
     state = {
@@ -70,6 +73,10 @@ export default class ToggleableTimerForm extends React.Component {
         this.setState({ isOpen: false });
     };
 
+    /**
+     * Render
+     * @returns {XML}
+     */
     render() {
         if (this.state.isOpen) {
             return (

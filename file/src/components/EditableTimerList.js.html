@@ -49,8 +49,16 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React from &apos;react&apos;;
 import EditableTimer from &apos;./EditableTimer&apos;;
 
+/**
+ * This component is a list of Editable Timers
+ * This component is stateless
+ */
 export default class EditableTimerList extends React.Component {
 
+    /**
+     * Render
+     * @returns {XML}
+     */
     render() {
         const timers = this.props.timers.map((timer) =&gt; {
             return (

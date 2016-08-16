@@ -48,9 +48,20 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/helpers/serverCommunication.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import request from &apos;superagent&apos;;
 
+/**
+ * This class handle all the communication with the server
+ * Providing a set of methods that returns Promises
+ */
 export default class ServerCommunication {
 
+    /**
+     * @param {string} [baseUrl=&apos;&apos;] - Location of the api
+     */
     constructor(baseUrl = &apos;&apos;) {
+        /**
+         * Location of the api
+         * @type {string}
+         */
         this.baseUrl = baseUrl;
     }
 

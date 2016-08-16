@@ -186,7 +186,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import React from 'react';\nimport TimerForm from './TimerForm';\nimport Timer from './Timer';\n\nexport default class EditableTimer extends React.Component {\n\n    state = {\n        editFormOpen: false\n    };\n\n\n    handleEditClick = () => {\n        this.openForm();\n    };\n\n    handleFormClose = () => {\n        this.closeForm();\n    };\n\n    handleSubmit = (timer) => {\n        this.props.onFormSubmit(timer);\n        this.closeForm();\n    };\n\n    closeForm = () => {\n        this.setState({ editFormOpen: false });\n    };\n\n    openForm = () => {\n        this.setState({ editFormOpen: true });\n    };\n\n    render() {\n        if (this.state.editFormOpen) {\n            return (\n                <TimerForm\n                    id={this.props.id}\n                    title={this.props.title}\n                    project={this.props.project}\n                    onFormSubmit={this.handleSubmit}\n                    onFormClose={this.handleFormClose}\n                />\n            );\n        } else {\n            return ( <Timer\n                    id={this.props.id}\n                    title={this.props.title}\n                    project={this.props.project}\n                    elapsed={this.props.elapsed}\n                    runningSince={this.props.runningSince}\n                    onEditClick={this.handleEditClick}\n                    onTrashClick={this.props.onTrashClick}\n                    onStartClick={this.props.onStartClick}\n                    onStopClick={this.props.onStopClick}\n                />\n            );\n        }\n    }\n}"
+    "content": "import React from 'react';\nimport TimerForm from './TimerForm';\nimport Timer from './Timer';\n\n/**\n * This component is a Timer that can be opened to be edited\n */\nexport default class EditableTimer extends React.Component {\n\n    state = {\n        editFormOpen: false\n    };\n\n\n    handleEditClick = () => {\n        this.openForm();\n    };\n\n    handleFormClose = () => {\n        this.closeForm();\n    };\n\n    handleSubmit = (timer) => {\n        this.props.onFormSubmit(timer);\n        this.closeForm();\n    };\n\n    closeForm = () => {\n        this.setState({ editFormOpen: false });\n    };\n\n    openForm = () => {\n        this.setState({ editFormOpen: true });\n    };\n\n    /**\n     * Render Method\n     * @returns {XML}\n     */\n    render() {\n        if (this.state.editFormOpen) {\n            return (\n                <TimerForm\n                    id={this.props.id}\n                    title={this.props.title}\n                    project={this.props.project}\n                    onFormSubmit={this.handleSubmit}\n                    onFormClose={this.handleFormClose}\n                />\n            );\n        } else {\n            return ( <Timer\n                    id={this.props.id}\n                    title={this.props.title}\n                    project={this.props.project}\n                    elapsed={this.props.elapsed}\n                    runningSince={this.props.runningSince}\n                    onEditClick={this.handleEditClick}\n                    onTrashClick={this.props.onTrashClick}\n                    onStartClick={this.props.onStartClick}\n                    onStopClick={this.props.onStopClick}\n                />\n            );\n        }\n    }\n}"
   },
   {
     "__docId__": 9,
@@ -200,9 +200,8 @@
     "export": true,
     "importPath": "timer_app/src/components/EditableTimer.js",
     "importStyle": "EditableTimer",
-    "description": null,
-    "lineNumber": 5,
-    "undocument": true,
+    "description": "This component is a Timer that can be opened to be edited",
+    "lineNumber": 8,
     "interface": false,
     "extends": [
       "react~React.Component"
@@ -217,14 +216,22 @@
     "memberof": "src/components/EditableTimer.js~EditableTimer",
     "longname": "src/components/EditableTimer.js~EditableTimer#render",
     "access": null,
-    "description": null,
-    "lineNumber": 33,
-    "undocument": true,
+    "description": "Render Method",
+    "lineNumber": 40,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{XML}"
+      }
+    ],
     "params": [],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "XML"
+      ],
+      "spread": false,
+      "description": ""
     },
     "generator": false
   },
@@ -239,7 +246,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import React from 'react';\nimport EditableTimer from './EditableTimer';\n\nexport default class EditableTimerList extends React.Component {\n\n    render() {\n        const timers = this.props.timers.map((timer) => {\n            return (\n                <EditableTimer\n                    key={timer.id}\n                    id={timer.id}\n                    title={timer.title}\n                    project={timer.project}\n                    elapsed={timer.elapsed}\n                    runningSince={timer.runningSince}\n                    onFormSubmit={this.props.onFormSubmit}\n                    onTrashClick={this.props.onTrashClick}\n                    onStartClick={this.props.onStartClick}\n                    onStopClick={this.props.onStopClick}\n                /> );\n        });\n        return (\n            <div id='timers'>\n                {timers}\n            </div>\n        );\n    }\n}\n"
+    "content": "import React from 'react';\nimport EditableTimer from './EditableTimer';\n\n/**\n * This component is a list of Editable Timers\n * This component is stateless\n */\nexport default class EditableTimerList extends React.Component {\n\n    /**\n     * Render\n     * @returns {XML}\n     */\n    render() {\n        const timers = this.props.timers.map((timer) => {\n            return (\n                <EditableTimer\n                    key={timer.id}\n                    id={timer.id}\n                    title={timer.title}\n                    project={timer.project}\n                    elapsed={timer.elapsed}\n                    runningSince={timer.runningSince}\n                    onFormSubmit={this.props.onFormSubmit}\n                    onTrashClick={this.props.onTrashClick}\n                    onStartClick={this.props.onStartClick}\n                    onStopClick={this.props.onStopClick}\n                /> );\n        });\n        return (\n            <div id='timers'>\n                {timers}\n            </div>\n        );\n    }\n}\n"
   },
   {
     "__docId__": 12,
@@ -253,9 +260,8 @@
     "export": true,
     "importPath": "timer_app/src/components/EditableTimerList.js",
     "importStyle": "EditableTimerList",
-    "description": null,
-    "lineNumber": 4,
-    "undocument": true,
+    "description": "This component is a list of Editable Timers\nThis component is stateless",
+    "lineNumber": 8,
     "interface": false,
     "extends": [
       "react~React.Component"
@@ -270,14 +276,22 @@
     "memberof": "src/components/EditableTimerList.js~EditableTimerList",
     "longname": "src/components/EditableTimerList.js~EditableTimerList#render",
     "access": null,
-    "description": null,
-    "lineNumber": 6,
-    "undocument": true,
+    "description": "Render",
+    "lineNumber": 14,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{XML}"
+      }
+    ],
     "params": [],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "XML"
+      ],
+      "spread": false,
+      "description": ""
     },
     "generator": false
   },
@@ -292,7 +306,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import React from 'react';\nimport TimerActionButton from './TimerActionButton';\nimport helpers from '../helpers';\n\nexport default class Timer extends React.Component {\n\n    state = {\n        buttons : false\n    };\n\n    /**\n     * When the component is mounted, force the refresh every 50ms\n     */\n    componentDidMount() {\n        this.forceUpdateInterval = setInterval( () => this.forceUpdate(), 50 );\n    }\n\n    /**\n     * When the component is about to be unmounted, stop the refresh\n     */\n    componentWillUnmount() {\n        clearInterval( this.forceUpdateInterval );\n    }\n\n    handleTrashClick = () => {\n        this.props.onTrashClick(this.props.id);\n    };\n\n    handleStartClick = () => {\n        this.props.onStartClick(this.props.id);\n    };\n\n    handleStopClick = () => {\n        this.props.onStopClick(this.props.id);\n    };\n\n    showButtons = () => {\n        this.setState({\n            buttons : true\n        });\n    }\n\n    hideButtons = () => {\n        this.setState({\n            buttons : false\n        });\n    }\n\n\n    render() {\n        const elapsedString = helpers.renderElapsedString( this.props.elapsed, this.props.runningSince );\n        let buttons;\n        if ( this.state.buttons ) {\n            buttons = (\n                <TimerActionButton\n                    timerIsRunning={!!this.props.runningSince}\n                    onStartClick={this.handleStartClick}\n                    onStopClick={this.handleStopClick}\n                />\n            );\n        }\n        return (\n            <div className='ui centered card' onMouseEnter={this.showButtons} onMouseLeave={this.hideButtons}>\n                <div className='content'>\n                    <div className='header'> {this.props.title}\n                    </div>\n                    <div className='meta'>\n                        {this.props.project} </div>\n                    <div className='center aligned description'>\n                        <h2>\n                            {elapsedString}\n                        </h2></div>\n                    <div className='extra content'>\n                        <span\n                            className='right floated edit icon'\n                            onClick={this.props.onEditClick}\n                        >\n                            <i className='edit icon'></i>\n                        </span>\n                        <span\n                            className='right floated trash icon'\n                            onClick={this.handleTrashClick}\n                        >\n                            <i className='trash icon'></i>\n                        </span>\n                    </div>\n                </div>\n                {buttons}\n            </div>\n        );\n    }\n}"
+    "content": "import React from 'react';\nimport TimerActionButton from './TimerActionButton';\nimport helpers from '../helpers';\n\n/**\n * This component shows a simple timer, the timer update the time showed every 50ms\n */\nexport default class Timer extends React.Component {\n\n    state = {\n        buttons : false\n    };\n\n    /**\n     * When the component is mounted, force the refresh every 50ms\n     */\n    componentDidMount() {\n        /**\n         * This variable is used to stop the forceUpdate when the component is unmounted\n         * @type {number}\n         */\n        this.forceUpdateInterval = setInterval( () => this.forceUpdate(), 50 );\n    }\n\n    /**\n     * When the component is about to be unmounted, stop the refresh\n     */\n    componentWillUnmount() {\n        clearInterval( this.forceUpdateInterval );\n    }\n\n    handleTrashClick = () => {\n        this.props.onTrashClick(this.props.id);\n    };\n\n    handleStartClick = () => {\n        this.props.onStartClick(this.props.id);\n    };\n\n    handleStopClick = () => {\n        this.props.onStopClick(this.props.id);\n    };\n\n    showButtons = () => {\n        this.setState({\n            buttons : true\n        });\n    }\n\n    hideButtons = () => {\n        this.setState({\n            buttons : false\n        });\n    }\n\n    /**\n     * Render\n     * @returns {XML}\n     */\n    render() {\n        const elapsedString = helpers.renderElapsedString( this.props.elapsed, this.props.runningSince );\n        let buttons;\n        if ( this.state.buttons ) {\n            buttons = (\n                <TimerActionButton\n                    timerIsRunning={!!this.props.runningSince}\n                    onStartClick={this.handleStartClick}\n                    onStopClick={this.handleStopClick}\n                />\n            );\n        }\n        return (\n            <div className='ui centered card' onMouseEnter={this.showButtons} onMouseLeave={this.hideButtons}>\n                <div className='content'>\n                    <div className='header'> {this.props.title}\n                    </div>\n                    <div className='meta'>\n                        {this.props.project} </div>\n                    <div className='center aligned description'>\n                        <h2>\n                            {elapsedString}\n                        </h2></div>\n                    <div className='extra content'>\n                        <span\n                            className='right floated edit icon'\n                            onClick={this.props.onEditClick}\n                        >\n                            <i className='edit icon'></i>\n                        </span>\n                        <span\n                            className='right floated trash icon'\n                            onClick={this.handleTrashClick}\n                        >\n                            <i className='trash icon'></i>\n                        </span>\n                    </div>\n                </div>\n                {buttons}\n            </div>\n        );\n    }\n}"
   },
   {
     "__docId__": 15,
@@ -306,9 +320,8 @@
     "export": true,
     "importPath": "timer_app/src/components/Timer.js",
     "importStyle": "Timer",
-    "description": null,
-    "lineNumber": 5,
-    "undocument": true,
+    "description": "This component shows a simple timer, the timer update the time showed every 50ms",
+    "lineNumber": 8,
     "interface": false,
     "extends": [
       "react~React.Component"
@@ -324,7 +337,7 @@
     "longname": "src/components/Timer.js~Timer#componentDidMount",
     "access": null,
     "description": "When the component is mounted, force the refresh every 50ms",
-    "lineNumber": 14,
+    "lineNumber": 17,
     "params": [],
     "generator": false
   },
@@ -337,13 +350,15 @@
     "memberof": "src/components/Timer.js~Timer",
     "longname": "src/components/Timer.js~Timer#forceUpdateInterval",
     "access": null,
-    "description": null,
-    "lineNumber": 15,
-    "undocument": true,
+    "description": "This variable is used to stop the forceUpdate when the component is unmounted",
+    "lineNumber": 22,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "number"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -356,7 +371,7 @@
     "longname": "src/components/Timer.js~Timer#componentWillUnmount",
     "access": null,
     "description": "When the component is about to be unmounted, stop the refresh",
-    "lineNumber": 21,
+    "lineNumber": 28,
     "params": [],
     "generator": false
   },
@@ -369,14 +384,22 @@
     "memberof": "src/components/Timer.js~Timer",
     "longname": "src/components/Timer.js~Timer#render",
     "access": null,
-    "description": null,
-    "lineNumber": 50,
-    "undocument": true,
+    "description": "Render",
+    "lineNumber": 60,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{XML}"
+      }
+    ],
     "params": [],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "XML"
+      ],
+      "spread": false,
+      "description": ""
     },
     "generator": false
   },
@@ -391,7 +414,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import React from 'react';\n\nexport default class TimerActionButton extends  React.Component {\n\n    render() {\n        if (this.props.timerIsRunning) {\n            return (\n                <div\n                    className='ui bottom attached red basic button'\n                    onClick={this.props.onStopClick}\n                >\n                    Stop\n                </div>\n            );\n        } else {\n            return (\n                <div\n                    className='ui bottom attached green basic button'\n                    onClick={this.props.onStartClick}\n                >\n                    Start\n                </div>\n            );\n        }\n    }\n    \n}"
+    "content": "import React from 'react';\n\n/**\n * This component is a simple button, if the timer is running is a Stop button, else is a Start button\n */\nexport default class TimerActionButton extends  React.Component {\n\n    /**\n     * Render\n     * @returns {XML}\n     */\n    render() {\n        if (this.props.timerIsRunning) {\n            return (\n                <div\n                    className='ui bottom attached red basic button'\n                    onClick={this.props.onStopClick}\n                >\n                    Stop\n                </div>\n            );\n        } else {\n            return (\n                <div\n                    className='ui bottom attached green basic button'\n                    onClick={this.props.onStartClick}\n                >\n                    Start\n                </div>\n            );\n        }\n    }\n    \n}"
   },
   {
     "__docId__": 21,
@@ -405,9 +428,8 @@
     "export": true,
     "importPath": "timer_app/src/components/TimerActionButton.js",
     "importStyle": "TimerActionButton",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
+    "description": "This component is a simple button, if the timer is running is a Stop button, else is a Start button",
+    "lineNumber": 6,
     "interface": false,
     "extends": [
       "react~React.Component"
@@ -422,14 +444,22 @@
     "memberof": "src/components/TimerActionButton.js~TimerActionButton",
     "longname": "src/components/TimerActionButton.js~TimerActionButton#render",
     "access": null,
-    "description": null,
-    "lineNumber": 5,
-    "undocument": true,
+    "description": "Render",
+    "lineNumber": 12,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{XML}"
+      }
+    ],
     "params": [],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "XML"
+      ],
+      "spread": false,
+      "description": ""
     },
     "generator": false
   },
@@ -444,7 +474,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import React from 'react';\n\nexport default class TimerForm extends React.Component {\n\n    state = {\n        titleError: false,\n        projectError: false\n    };\n\n    handleSubmit = () => {\n        const titleError = !this.refs.title.value.trim().length;\n        const projectError = !this.refs.project.value.trim().length;\n        this.setState({\n            titleError,\n            projectError\n        });\n        if (!titleError && !projectError) {\n            this.props.onFormSubmit({\n                id: this.props.id,\n                title: this.refs.title.value,\n                project: this.refs.project.value\n            });\n        }\n    };\n\n    render() {\n        const submitText = this.props.id ? 'Update' : 'Create';\n        const titleClass = this.state.titleError ? 'field error' : 'field';\n        const projectClass = this.state.projectError ? 'field error' : 'field';\n        return (\n            <div className='ui centered card'>\n                <div className='content'>\n                    <div className='ui form'>\n                        <div className={titleClass}>\n                            <label>Title</label>\n                            <input type='text' ref=\"title\" defaultValue={this.props.title}/></div>\n                        <div className={projectClass}>\n                            <label>Project</label>\n                            <input type='text' ref=\"project\" defaultValue={this.props.project}/></div>\n                        <div className='ui two bottom attached buttons'>\n                            <button\n                                className='ui basic blue button'\n                                onClick={this.handleSubmit}\n                            >\n                                {submitText}\n                            </button>\n                            <button\n                                className='ui basic red button'\n                                onClick={this.props.onFormClose}\n                            >\n                                Cancel\n                            </button>\n                        </div>\n                    </div>\n                </div>\n            </div> );\n    }\n}"
+    "content": "import React from 'react';\n\n/**\n * This component is a Timer when is being edited\n */\nexport default class TimerForm extends React.Component {\n\n    state = {\n        titleError: false,\n        projectError: false\n    };\n\n    handleSubmit = () => {\n        const titleError = !this.refs.title.value.trim().length;\n        const projectError = !this.refs.project.value.trim().length;\n        this.setState({\n            titleError,\n            projectError\n        });\n        if (!titleError && !projectError) {\n            this.props.onFormSubmit({\n                id: this.props.id,\n                title: this.refs.title.value,\n                project: this.refs.project.value\n            });\n        }\n    };\n\n    /**\n     * Render\n     * @returns {XML}\n     */\n    render() {\n        const submitText = this.props.id ? 'Update' : 'Create';\n        const titleClass = this.state.titleError ? 'field error' : 'field';\n        const projectClass = this.state.projectError ? 'field error' : 'field';\n        return (\n            <div className='ui centered card'>\n                <div className='content'>\n                    <div className='ui form'>\n                        <div className={titleClass}>\n                            <label>Title</label>\n                            <input type='text' ref=\"title\" defaultValue={this.props.title}/></div>\n                        <div className={projectClass}>\n                            <label>Project</label>\n                            <input type='text' ref=\"project\" defaultValue={this.props.project}/></div>\n                        <div className='ui two bottom attached buttons'>\n                            <button\n                                className='ui basic blue button'\n                                onClick={this.handleSubmit}\n                            >\n                                {submitText}\n                            </button>\n                            <button\n                                className='ui basic red button'\n                                onClick={this.props.onFormClose}\n                            >\n                                Cancel\n                            </button>\n                        </div>\n                    </div>\n                </div>\n            </div> );\n    }\n}"
   },
   {
     "__docId__": 24,
@@ -458,9 +488,8 @@
     "export": true,
     "importPath": "timer_app/src/components/TimerForm.js",
     "importStyle": "TimerForm",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
+    "description": "This component is a Timer when is being edited",
+    "lineNumber": 6,
     "interface": false,
     "extends": [
       "react~React.Component"
@@ -475,14 +504,22 @@
     "memberof": "src/components/TimerForm.js~TimerForm",
     "longname": "src/components/TimerForm.js~TimerForm#render",
     "access": null,
-    "description": null,
-    "lineNumber": 26,
-    "undocument": true,
+    "description": "Render",
+    "lineNumber": 33,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{XML}"
+      }
+    ],
     "params": [],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "XML"
+      ],
+      "spread": false,
+      "description": ""
     },
     "generator": false
   },
@@ -497,7 +534,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import React from 'react';\nimport helpers from '../helpers';\nimport ServerCommunication from '../helpers/serverCommunication';\n\nimport EditableTimerList from './EditableTimerList';\nimport ToggleableTimerForm from './ToggleableTimerForm';\n\nconst Client = new ServerCommunication();\n\nexport default class TimersDashboard extends React.Component {\n\n    state = {\n        timers: []\n    };\n\n    handleEditFormSubmit = (attrs) => {\n        this.updateTimer(attrs);\n    };\n\n    handleStartClick = (timerId) => {\n        this.startTimer(timerId);\n    };\n\n    handleStopClick = (timerId) => {\n        this.stopTimer(timerId);\n    };\n\n    /**\n     * Return a function for filter/find in an array an element with the specified id\n     * @param {string} searched_id\n     * @returns {function(arg : {id: string}): boolean}\n     */\n    static byId(searched_id) {\n        return ({id}) => id === searched_id;\n    }\n\n    /**\n     * Update a timer using the defined id\n     * @param {string} id\n     * @param {APITimer} attrs\n     */\n    updateTimerById(id, attrs) {\n        const timers = this.state.timers.slice();\n        const timerPos = timers.findIndex(TimersDashboard.byId(id));\n        if (~timerPos) {\n            timers[timerPos] = Object.assign({}, timers[timerPos], attrs);\n            this.setState({\n                timers\n            });\n        }\n    }\n\n    /**\n     * Update a timer\n     * @param {APITimer} attrs\n     */\n    updateTimer(attrs) {\n        this.updateTimerById(attrs.id, {\n            title: attrs.title,\n            project: attrs.project\n        });\n        Client.updateTimer(attrs);\n    }\n\n    /**\n     * Start a timer\n     * @param {string} timerId\n     */\n    startTimer(timerId) {\n        this.updateTimerById(timerId, {\n            runningSince: Date.now()\n        });\n        Client.startTimer({\n            id: timerId\n        });\n    }\n\n    /**\n     * Stop a timer\n     * @param {string} timerId\n     */\n    stopTimer(timerId) {\n        const timer = this.state.timers.find(TimersDashboard.byId(timerId));\n        if (timer) {\n            this.updateTimerById(timerId, {\n                elapsed: timer.elapsed + Date.now() - timer.runningSince,\n                runningSince: null\n            });\n            Client.stopTimer({\n                id: timerId\n            });\n        }\n    }\n\n    handleCreateFormSubmit = (timer) => {\n        this.createTimer(timer);\n    };\n\n    /**\n     * Create a new timer\n     * @param {APITimer} timer\n     */\n    createTimer(timer) {\n        const t = helpers.newTimer(timer);\n        this.setState({\n            timers: this.state.timers.concat(t)\n        });\n        Client.createTimer(timer)\n    }\n\n    handleTrashClick = (timerId) => {\n        this.deleteTimer(timerId);\n    };\n\n    /**\n     * Delete the specified timerId from the server\n     * @param {string} timerId\n     */\n    deleteTimer(timerId) {\n        this.setState({\n            timers: this.state.timers.filter(({id}) => id !== timerId)\n        });\n        Client.deleteTimer( timerId );\n    }\n\n    loadTimersFromServer = async() => {\n        try {\n            const timers = await Client.getTimers();\n            this.setState({\n                timers\n            });\n        } catch (err) {\n            console.error(err);\n        }\n    }\n\n    /**\n     * Reload the data from the server every 5s\n     */\n    componentDidMount() {\n        this.loadTimersFromServer();\n        /**\n         * Ref of the setInterval\n         * This variable is used to clear the interval when the element is unmounted\n         * @type {number}\n         */\n        this.ajaxInterval = setInterval(this.loadTimersFromServer, 5000);\n    }\n\n    /**\n     * Stop loading the data from the server\n     */\n    componentWillUnmount() {\n        clearInterval(this.ajaxInterval);\n    }\n\n    render() {\n        return (\n            <div className='ui three column centered grid'>\n                <div className='column'>\n                    <EditableTimerList\n                        onFormSubmit={this.handleEditFormSubmit}\n                        onTrashClick={this.handleTrashClick}\n                        onStartClick={this.handleStartClick}\n                        onStopClick={this.handleStopClick}\n                        timers={this.state.timers}\n                    />\n                    <ToggleableTimerForm\n                        onFormSubmit={this.handleCreateFormSubmit}\n                        isOpen={true}/>\n                </div>\n            </div>\n        );\n    }\n}\n"
+    "content": "import React from 'react';\nimport helpers from '../helpers';\nimport ServerCommunication from '../helpers/serverCommunication';\n\nimport EditableTimerList from './EditableTimerList';\nimport ToggleableTimerForm from './ToggleableTimerForm';\n\nconst Client = new ServerCommunication();\n\n/**\n * This is the main component, it shows a list of editable timers and a button/box to create a new timer\n * It also handle all the logic and communication with the server\n */\nexport default class TimersDashboard extends React.Component {\n\n    state = {\n        timers: []\n    };\n\n    handleEditFormSubmit = (attrs) => {\n        this.updateTimer(attrs);\n    };\n\n    handleStartClick = (timerId) => {\n        this.startTimer(timerId);\n    };\n\n    handleStopClick = (timerId) => {\n        this.stopTimer(timerId);\n    };\n\n    /**\n     * Return a function for filter/find in an array an element with the specified id\n     * @param {string} searched_id\n     * @returns {function(arg : {id: string}): boolean}\n     */\n    static byId(searched_id) {\n        return ({id}) => id === searched_id;\n    }\n\n    /**\n     * Update a timer using the defined id\n     * @param {string} id\n     * @param {APITimer} attrs\n     */\n    updateTimerById(id, attrs) {\n        const timers = this.state.timers.slice();\n        const timerPos = timers.findIndex(TimersDashboard.byId(id));\n        if (~timerPos) {\n            timers[timerPos] = Object.assign({}, timers[timerPos], attrs);\n            this.setState({\n                timers\n            });\n        }\n    }\n\n    /**\n     * Update a timer\n     * @param {APITimer} attrs\n     */\n    updateTimer(attrs) {\n        this.updateTimerById(attrs.id, {\n            title: attrs.title,\n            project: attrs.project\n        });\n        Client.updateTimer(attrs);\n    }\n\n    /**\n     * Start a timer\n     * @param {string} timerId\n     */\n    startTimer(timerId) {\n        this.updateTimerById(timerId, {\n            runningSince: Date.now()\n        });\n        Client.startTimer({\n            id: timerId\n        });\n    }\n\n    /**\n     * Stop a timer\n     * @param {string} timerId\n     */\n    stopTimer(timerId) {\n        const timer = this.state.timers.find(TimersDashboard.byId(timerId));\n        if (timer) {\n            this.updateTimerById(timerId, {\n                elapsed: timer.elapsed + Date.now() - timer.runningSince,\n                runningSince: null\n            });\n            Client.stopTimer({\n                id: timerId\n            });\n        }\n    }\n\n    handleCreateFormSubmit = (timer) => {\n        this.createTimer(timer);\n    };\n\n    /**\n     * Create a new timer\n     * @param {APITimer} timer\n     */\n    createTimer(timer) {\n        const t = helpers.newTimer(timer);\n        this.setState({\n            timers: this.state.timers.concat(t)\n        });\n        Client.createTimer(timer)\n    }\n\n    handleTrashClick = (timerId) => {\n        this.deleteTimer(timerId);\n    };\n\n    /**\n     * Delete the specified timerId from the server\n     * @param {string} timerId\n     */\n    deleteTimer(timerId) {\n        this.setState({\n            timers: this.state.timers.filter(({id}) => id !== timerId)\n        });\n        Client.deleteTimer( timerId );\n    }\n\n    loadTimersFromServer = async() => {\n        try {\n            const timers = await Client.getTimers();\n            this.setState({\n                timers\n            });\n        } catch (err) {\n            console.error(err);\n        }\n    }\n\n    /**\n     * Reload the data from the server every 5s\n     */\n    componentDidMount() {\n        this.loadTimersFromServer();\n        /**\n         * Ref of the setInterval\n         * This variable is used to clear the interval when the element is unmounted\n         * @type {number}\n         */\n        this.ajaxInterval = setInterval(this.loadTimersFromServer, 5000);\n    }\n\n    /**\n     * Stop loading the data from the server\n     */\n    componentWillUnmount() {\n        clearInterval(this.ajaxInterval);\n    }\n\n    /**\n     * Render\n     * @returns {XML}\n     */\n    render() {\n        return (\n            <div className='ui three column centered grid'>\n                <div className='column'>\n                    <EditableTimerList\n                        onFormSubmit={this.handleEditFormSubmit}\n                        onTrashClick={this.handleTrashClick}\n                        onStartClick={this.handleStartClick}\n                        onStopClick={this.handleStopClick}\n                        timers={this.state.timers}\n                    />\n                    <ToggleableTimerForm\n                        onFormSubmit={this.handleCreateFormSubmit}\n                        isOpen={true}/>\n                </div>\n            </div>\n        );\n    }\n}\n"
   },
   {
     "__docId__": 27,
@@ -532,9 +569,8 @@
     "export": true,
     "importPath": "timer_app/src/components/TimersDashboard.js",
     "importStyle": "TimersDashboard",
-    "description": null,
-    "lineNumber": 10,
-    "undocument": true,
+    "description": "This is the main component, it shows a list of editable timers and a button/box to create a new timer\nIt also handle all the logic and communication with the server",
+    "lineNumber": 14,
     "interface": false,
     "extends": [
       "react~React.Component"
@@ -550,7 +586,7 @@
     "longname": "src/components/TimersDashboard.js~TimersDashboard.byId",
     "access": null,
     "description": "Return a function for filter/find in an array an element with the specified id",
-    "lineNumber": 33,
+    "lineNumber": 37,
     "unknown": [
       {
         "tagName": "@returns",
@@ -589,7 +625,7 @@
     "longname": "src/components/TimersDashboard.js~TimersDashboard#updateTimerById",
     "access": null,
     "description": "Update a timer using the defined id",
-    "lineNumber": 42,
+    "lineNumber": 46,
     "params": [
       {
         "nullable": null,
@@ -624,7 +660,7 @@
     "longname": "src/components/TimersDashboard.js~TimersDashboard#updateTimer",
     "access": null,
     "description": "Update a timer",
-    "lineNumber": 57,
+    "lineNumber": 61,
     "params": [
       {
         "nullable": null,
@@ -649,7 +685,7 @@
     "longname": "src/components/TimersDashboard.js~TimersDashboard#startTimer",
     "access": null,
     "description": "Start a timer",
-    "lineNumber": 69,
+    "lineNumber": 73,
     "params": [
       {
         "nullable": null,
@@ -674,7 +710,7 @@
     "longname": "src/components/TimersDashboard.js~TimersDashboard#stopTimer",
     "access": null,
     "description": "Stop a timer",
-    "lineNumber": 82,
+    "lineNumber": 86,
     "params": [
       {
         "nullable": null,
@@ -699,7 +735,7 @@
     "longname": "src/components/TimersDashboard.js~TimersDashboard#createTimer",
     "access": null,
     "description": "Create a new timer",
-    "lineNumber": 103,
+    "lineNumber": 107,
     "params": [
       {
         "nullable": null,
@@ -724,7 +760,7 @@
     "longname": "src/components/TimersDashboard.js~TimersDashboard#deleteTimer",
     "access": null,
     "description": "Delete the specified timerId from the server",
-    "lineNumber": 119,
+    "lineNumber": 123,
     "params": [
       {
         "nullable": null,
@@ -749,7 +785,7 @@
     "longname": "src/components/TimersDashboard.js~TimersDashboard#componentDidMount",
     "access": null,
     "description": "Reload the data from the server every 5s",
-    "lineNumber": 140,
+    "lineNumber": 144,
     "params": [],
     "generator": false
   },
@@ -763,7 +799,7 @@
     "longname": "src/components/TimersDashboard.js~TimersDashboard#ajaxInterval",
     "access": null,
     "description": "Ref of the setInterval\nThis variable is used to clear the interval when the element is unmounted",
-    "lineNumber": 147,
+    "lineNumber": 151,
     "type": {
       "nullable": null,
       "types": [
@@ -783,7 +819,7 @@
     "longname": "src/components/TimersDashboard.js~TimersDashboard#componentWillUnmount",
     "access": null,
     "description": "Stop loading the data from the server",
-    "lineNumber": 153,
+    "lineNumber": 157,
     "params": [],
     "generator": false
   },
@@ -796,14 +832,22 @@
     "memberof": "src/components/TimersDashboard.js~TimersDashboard",
     "longname": "src/components/TimersDashboard.js~TimersDashboard#render",
     "access": null,
-    "description": null,
-    "lineNumber": 157,
-    "undocument": true,
+    "description": "Render",
+    "lineNumber": 165,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{XML}"
+      }
+    ],
     "params": [],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "XML"
+      ],
+      "spread": false,
+      "description": ""
     },
     "generator": false
   },
@@ -818,7 +862,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import React from 'react';\nimport TimerForm from './TimerForm';\n\nexport default class ToggleableTimerForm extends React.Component {\n\n    state = {\n        isOpen: false\n    };\n\n    handleFormOpen = () => {\n        this.setState({\n            isOpen: true\n        });\n    };\n\n    handleFormClose = () => {\n        this.setState({ isOpen: false });\n    };\n\n    handleFormSubmit = (timer) => {\n        this.props.onFormSubmit(timer);\n        this.setState({ isOpen: false });\n    };\n\n    render() {\n        if (this.state.isOpen) {\n            return (\n                <TimerForm\n                    onFormSubmit={this.handleFormSubmit}\n                    onFormClose={this.handleFormClose}\n                />\n            );\n        } else {\n            return (\n                <div className='ui basic content center aligned segment'>\n                    <button\n                        className='ui basic button icon'\n                        onClick={this.handleFormOpen}\n                    >\n                        <i className='plus icon'></i>\n                    </button>\n                </div> );\n        }\n    }\n}"
+    "content": "import React from 'react';\nimport TimerForm from './TimerForm';\n\n/**\n * This component shows a timer or a form to edit the timer, based on his internal state\n */\nexport default class ToggleableTimerForm extends React.Component {\n\n    state = {\n        isOpen: false\n    };\n\n    handleFormOpen = () => {\n        this.setState({\n            isOpen: true\n        });\n    };\n\n    handleFormClose = () => {\n        this.setState({ isOpen: false });\n    };\n\n    handleFormSubmit = (timer) => {\n        this.props.onFormSubmit(timer);\n        this.setState({ isOpen: false });\n    };\n\n    /**\n     * Render\n     * @returns {XML}\n     */\n    render() {\n        if (this.state.isOpen) {\n            return (\n                <TimerForm\n                    onFormSubmit={this.handleFormSubmit}\n                    onFormClose={this.handleFormClose}\n                />\n            );\n        } else {\n            return (\n                <div className='ui basic content center aligned segment'>\n                    <button\n                        className='ui basic button icon'\n                        onClick={this.handleFormOpen}\n                    >\n                        <i className='plus icon'></i>\n                    </button>\n                </div> );\n        }\n    }\n}"
   },
   {
     "__docId__": 41,
@@ -832,9 +876,8 @@
     "export": true,
     "importPath": "timer_app/src/components/ToggleableTimerForm.js",
     "importStyle": "ToggleableTimerForm",
-    "description": null,
-    "lineNumber": 4,
-    "undocument": true,
+    "description": "This component shows a timer or a form to edit the timer, based on his internal state",
+    "lineNumber": 7,
     "interface": false,
     "extends": [
       "react~React.Component"
@@ -849,14 +892,22 @@
     "memberof": "src/components/ToggleableTimerForm.js~ToggleableTimerForm",
     "longname": "src/components/ToggleableTimerForm.js~ToggleableTimerForm#render",
     "access": null,
-    "description": null,
-    "lineNumber": 25,
-    "undocument": true,
+    "description": "Render",
+    "lineNumber": 32,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{XML}"
+      }
+    ],
     "params": [],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "XML"
+      ],
+      "spread": false,
+      "description": ""
     },
     "generator": false
   },
@@ -871,7 +922,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "import request from 'superagent';\n\nexport default class ServerCommunication {\n\n    constructor(baseUrl = '') {\n        this.baseUrl = baseUrl;\n    }\n\n    /**\n     * @typedef {Object} APITimer\n     * @property {string} title - Title of the Timer\n     * @property {string} project - Name of the Project\n     * @property {number} elapsed - Elapsed milliseconds\n     * @property {string} id - UUIDv4 of the timer\n     * @property {number|null} runningSince - Unix Timestamp of when the timer was started\n     */\n\n    /**\n     *\n     * @returns {Promise<Array<APITimer>>}\n     */\n    async getTimers() {\n        return (await request.get(`${this.baseUrl}/api/timers`)).body;\n    }\n\n    /**\n     * Start a timer\n     * @param {Object} arg\n     * @param {string} arg.id\n     * @param {number} arg.start\n     * @returns {Promise}\n     */\n    async startTimer({id, start = Date.now() }) {\n        return await request.post(`${this.baseUrl}/api/timers/start`, {id, start});\n    }\n\n    /**\n     * Stop a timer\n     * @param {Object} arg\n     * @param {string} arg.id\n     * @param {number} arg.stop\n     * @returns {Promise}\n     */\n    async stopTimer({id, stop = Date.now() }) {\n        return await request.post(`${this.baseUrl}/api/timers/stop`, {id, stop});\n    }\n\n    /**\n     * Create a new timer\n     * @param {APITimer} attrs\n     * @returns {Promise}\n     */\n    async createTimer( attrs ) {\n        return await request.post(`${this.baseUrl}/api/timers` , attrs );\n    }\n\n    /**\n     * Change a property of a timer\n     * @param {APITimer} attrs\n     * @returns {Promise}\n     */\n    async updateTimer( attrs ) {\n        return await request.put(`${this.baseUrl}/api/timers` , attrs );\n    }\n\n    /**\n     * Delete a timer\n     * @param {string} id\n     * @returns {Promise}\n     */\n    async deleteTimer( id ) {\n        return await request.delete(`${this.baseUrl}/api/timers` , { data : id } );\n    }\n\n}\n"
+    "content": "import request from 'superagent';\n\n/**\n * This class handle all the communication with the server\n * Providing a set of methods that returns Promises\n */\nexport default class ServerCommunication {\n\n    /**\n     * @param {string} [baseUrl=''] - Location of the api\n     */\n    constructor(baseUrl = '') {\n        /**\n         * Location of the api\n         * @type {string}\n         */\n        this.baseUrl = baseUrl;\n    }\n\n    /**\n     * @typedef {Object} APITimer\n     * @property {string} title - Title of the Timer\n     * @property {string} project - Name of the Project\n     * @property {number} elapsed - Elapsed milliseconds\n     * @property {string} id - UUIDv4 of the timer\n     * @property {number|null} runningSince - Unix Timestamp of when the timer was started\n     */\n\n    /**\n     *\n     * @returns {Promise<Array<APITimer>>}\n     */\n    async getTimers() {\n        return (await request.get(`${this.baseUrl}/api/timers`)).body;\n    }\n\n    /**\n     * Start a timer\n     * @param {Object} arg\n     * @param {string} arg.id\n     * @param {number} arg.start\n     * @returns {Promise}\n     */\n    async startTimer({id, start = Date.now() }) {\n        return await request.post(`${this.baseUrl}/api/timers/start`, {id, start});\n    }\n\n    /**\n     * Stop a timer\n     * @param {Object} arg\n     * @param {string} arg.id\n     * @param {number} arg.stop\n     * @returns {Promise}\n     */\n    async stopTimer({id, stop = Date.now() }) {\n        return await request.post(`${this.baseUrl}/api/timers/stop`, {id, stop});\n    }\n\n    /**\n     * Create a new timer\n     * @param {APITimer} attrs\n     * @returns {Promise}\n     */\n    async createTimer( attrs ) {\n        return await request.post(`${this.baseUrl}/api/timers` , attrs );\n    }\n\n    /**\n     * Change a property of a timer\n     * @param {APITimer} attrs\n     * @returns {Promise}\n     */\n    async updateTimer( attrs ) {\n        return await request.put(`${this.baseUrl}/api/timers` , attrs );\n    }\n\n    /**\n     * Delete a timer\n     * @param {string} id\n     * @returns {Promise}\n     */\n    async deleteTimer( id ) {\n        return await request.delete(`${this.baseUrl}/api/timers` , { data : id } );\n    }\n\n}\n"
   },
   {
     "__docId__": 44,
@@ -885,9 +936,8 @@
     "export": true,
     "importPath": "timer_app/src/helpers/serverCommunication.js",
     "importStyle": "ServerCommunication",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
+    "description": "This class handle all the communication with the server\nProviding a set of methods that returns Promises",
+    "lineNumber": 7,
     "interface": false
   },
   {
@@ -899,18 +949,20 @@
     "memberof": "src/helpers/serverCommunication.js~ServerCommunication",
     "longname": "src/helpers/serverCommunication.js~ServerCommunication#constructor",
     "access": null,
-    "description": null,
-    "lineNumber": 5,
-    "undocument": true,
+    "description": "",
+    "lineNumber": 12,
     "params": [
       {
-        "name": "baseUrl",
-        "optional": true,
+        "nullable": null,
         "types": [
           "string"
         ],
-        "defaultRaw": "",
-        "defaultValue": ""
+        "spread": false,
+        "optional": true,
+        "defaultValue": "''",
+        "defaultRaw": "''",
+        "name": "baseUrl",
+        "description": "Location of the api"
       }
     ],
     "generator": false
@@ -924,13 +976,15 @@
     "memberof": "src/helpers/serverCommunication.js~ServerCommunication",
     "longname": "src/helpers/serverCommunication.js~ServerCommunication#baseUrl",
     "access": null,
-    "description": null,
-    "lineNumber": 6,
-    "undocument": true,
+    "description": "Location of the api",
+    "lineNumber": 17,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "string"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -1014,7 +1068,7 @@
     "longname": "src/helpers/serverCommunication.js~ServerCommunication#getTimers",
     "access": null,
     "description": "",
-    "lineNumber": 22,
+    "lineNumber": 33,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1042,7 +1096,7 @@
     "longname": "src/helpers/serverCommunication.js~ServerCommunication#startTimer",
     "access": null,
     "description": "Start a timer",
-    "lineNumber": 33,
+    "lineNumber": 44,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1101,7 +1155,7 @@
     "longname": "src/helpers/serverCommunication.js~ServerCommunication#stopTimer",
     "access": null,
     "description": "Stop a timer",
-    "lineNumber": 44,
+    "lineNumber": 55,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1160,7 +1214,7 @@
     "longname": "src/helpers/serverCommunication.js~ServerCommunication#createTimer",
     "access": null,
     "description": "Create a new timer",
-    "lineNumber": 53,
+    "lineNumber": 64,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1199,7 +1253,7 @@
     "longname": "src/helpers/serverCommunication.js~ServerCommunication#updateTimer",
     "access": null,
     "description": "Change a property of a timer",
-    "lineNumber": 62,
+    "lineNumber": 73,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1238,7 +1292,7 @@
     "longname": "src/helpers/serverCommunication.js~ServerCommunication#deleteTimer",
     "access": null,
     "description": "Delete a timer",
-    "lineNumber": 71,
+    "lineNumber": 82,
     "unknown": [
       {
         "tagName": "@returns",

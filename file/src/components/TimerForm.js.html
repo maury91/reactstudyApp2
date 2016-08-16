@@ -48,6 +48,9 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/components/TimerForm.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React from &apos;react&apos;;
 
+/**
+ * This component is a Timer when is being edited
+ */
 export default class TimerForm extends React.Component {
 
     state = {
@@ -71,6 +74,10 @@ export default class TimerForm extends React.Component {
         }
     };
 
+    /**
+     * Render
+     * @returns {XML}
+     */
     render() {
         const submitText = this.props.id ? &apos;Update&apos; : &apos;Create&apos;;
         const titleClass = this.state.titleError ? &apos;field error&apos; : &apos;field&apos;;

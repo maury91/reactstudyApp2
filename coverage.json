@@ -1,73 +1,47 @@
 {
-  "coverage": "50%",
+  "coverage": "100%",
   "expectCount": 36,
-  "actualCount": 18,
+  "actualCount": 36,
   "files": {
     "src/components/EditableTimer.js": {
       "expectCount": 2,
-      "actualCount": 0,
-      "undocumentLines": [
-        5,
-        33
-      ]
+      "actualCount": 2,
+      "undocumentLines": []
     },
     "src/components/EditableTimerList.js": {
       "expectCount": 2,
-      "actualCount": 0,
-      "undocumentLines": [
-        4,
-        6
-      ]
+      "actualCount": 2,
+      "undocumentLines": []
     },
     "src/helpers/serverCommunication.js": {
       "expectCount": 9,
-      "actualCount": 6,
-      "undocumentLines": [
-        3,
-        6,
-        5
-      ]
+      "actualCount": 9,
+      "undocumentLines": []
     },
     "src/components/Timer.js": {
       "expectCount": 5,
-      "actualCount": 2,
-      "undocumentLines": [
-        5,
-        15,
-        50
-      ]
+      "actualCount": 5,
+      "undocumentLines": []
     },
     "src/components/TimerActionButton.js": {
       "expectCount": 2,
-      "actualCount": 0,
-      "undocumentLines": [
-        3,
-        5
-      ]
+      "actualCount": 2,
+      "undocumentLines": []
     },
     "src/components/TimerForm.js": {
       "expectCount": 2,
-      "actualCount": 0,
-      "undocumentLines": [
-        3,
-        26
-      ]
+      "actualCount": 2,
+      "undocumentLines": []
     },
     "src/components/TimersDashboard.js": {
       "expectCount": 12,
-      "actualCount": 10,
-      "undocumentLines": [
-        10,
-        157
-      ]
+      "actualCount": 12,
+      "undocumentLines": []
     },
     "src/components/ToggleableTimerForm.js": {
       "expectCount": 2,
-      "actualCount": 0,
-      "undocumentLines": [
-        4,
-        25
-      ]
+      "actualCount": 2,
+      "undocumentLines": []
     }
   }
 }
