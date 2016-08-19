@@ -1,4 +1,4 @@
-import request from 'superagent';
+import "whatwg-fetch";
 
 /**
  * This class handle all the communication with the server
@@ -31,7 +31,7 @@ export default class ServerCommunication {
      * @returns {Promise<Array<APITimer>>}
      */
     async getTimers() {
-        return (await request.get(`${this.baseUrl}/api/timers`)).body;
+        return (await fetch(`${this.baseUrl}/api/timers`)).body;
     }
 
     /**
@@ -41,8 +41,15 @@ export default class ServerCommunication {
      * @param {number} arg.start
      * @returns {Promise}
      */
-    async startTimer({id, start = Date.now() }) {
-        return await request.post(`${this.baseUrl}/api/timers/start`, {id, start});
+    async startTimer({id, start = Date.now()}) {
+        return await fetch(`${this.baseUrl}/api/timers/start`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({id, start})
+        });
     }
 
     /**
@@ -52,8 +59,15 @@ export default class ServerCommunication {
      * @param {number} arg.stop
      * @returns {Promise}
      */
-    async stopTimer({id, stop = Date.now() }) {
-        return await request.post(`${this.baseUrl}/api/timers/stop`, {id, stop});
+    async stopTimer({id, stop = Date.now()}) {
+        return await fetch(`${this.baseUrl}/api/timers/stop`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({id, stop})
+        });
     }
 
     /**
@@ -61,8 +75,15 @@ export default class ServerCommunication {
      * @param {APITimer} attrs
      * @returns {Promise}
      */
-    async createTimer( attrs ) {
-        return await request.post(`${this.baseUrl}/api/timers` , attrs );
+    async createTimer(attrs) {
+        return await fetch(`${this.baseUrl}/api/timers`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(attrs)
+        });
     }
 
     /**
@@ -70,8 +91,15 @@ export default class ServerCommunication {
      * @param {APITimer} attrs
      * @returns {Promise}
      */
-    async updateTimer( attrs ) {
-        return await request.put(`${this.baseUrl}/api/timers` , attrs );
+    async updateTimer(attrs) {
+        return await fetch(`${this.baseUrl}/api/timers`, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(attrs)
+        });
     }
 
     /**
@@ -79,8 +107,15 @@ export default class ServerCommunication {
      * @param {string} id
      * @returns {Promise}
      */
-    async deleteTimer( id ) {
-        return await request.delete(`${this.baseUrl}/api/timers` , { data : id } );
+    async deleteTimer(id) {
+        return await fetch(`${this.baseUrl}/api/timers`, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({data: id})
+        });
     }
 
 }
