@@ -384,12 +384,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/client.js",
-    "file/src/client.js.html",
-    "src/client.js",
-    "file"
-  ],
-  [
     "src/components/editabletimer.js",
     "file/src/components/EditableTimer.js.html",
     "src/components/EditableTimer.js",
